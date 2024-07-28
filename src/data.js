@@ -36,17 +36,6 @@ export const projects = [
   },
 ];
 
-export const skills = [
-  "React",
-  "JavaScript",
-  "CSS",
-  "Bootstrap & Tailwind",
-  "HTML",
-  "PHP",
-  "Node.js",
-  "Graphic Design & Digital Marketing",
-];
-
 export const frontend = [
   "React",
   "JavaScript",
@@ -84,13 +73,13 @@ export const graphicDesign = [
 export const testimonials = [
   {
     quote: '"I thank God for introducing you to me, brother. Glory be to him."',
-    image: "images/shabooya.jpg",
+   
     name: "Thandisizwe Dhano",
     company: "Ngena Ekasi Tours",
   },
   {
     quote: '"We will carry your name high."',
-    image: "images/shabooya.jpg",
+    
     name: "Lana Rodel",
     company: "Crater Bush Villa",
   },

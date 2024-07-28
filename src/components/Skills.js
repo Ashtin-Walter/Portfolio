@@ -8,7 +8,6 @@ import {
 } from "@heroicons/react/24/solid";
 import React from "react";
 import {
-  skills,
   frontend,
   backend,
   digitalMarketing,
@@ -30,8 +29,8 @@ export default function Skills() {
           </p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="bg-slate-700 p-4 rounded shadow text-center ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="bg-slate-700 p-4 rounded shadow text-center ">
             <h3 className="flex flex-col items-center text-center">
               <ComputerDesktopIcon className="w-5" />
               Frontend
@@ -49,7 +48,7 @@ export default function Skills() {
               ))}
             </div>
           </div>
-          <div class="bg-slate-700 p-4 rounded shadow text-center">
+          <div className="bg-slate-700 p-4 rounded shadow text-center">
             <h3 className="flex flex-col items-center text-center">
               <ServerStackIcon className="w-5" />
               Backend
@@ -67,7 +66,7 @@ export default function Skills() {
               ))}
             </div>
           </div>
-          <div class="bg-slate-700 p-4 rounded shadow text-center">
+          <div className="bg-slate-700 p-4 rounded shadow text-center">
             <h3 className="flex flex-col items-center text-center">
               <CursorArrowRaysIcon className="w-5" />
               Digital Marketing
@@ -85,7 +84,7 @@ export default function Skills() {
               ))}
             </div>
           </div>
-          <div class="bg-slate-700 p-4 rounded shadow text-center">
+          <div className="bg-slate-700 p-4 rounded shadow text-center">
             <h3 className="flex flex-col items-center text-center">
               <PaintBrushIcon className="w-5" />
               Graphic Design

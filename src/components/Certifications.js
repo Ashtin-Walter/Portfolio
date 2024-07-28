@@ -19,22 +19,22 @@ export default function Certifications() {
             Always learning and growing.
           </p>
         </div>
-        <div class=" mx-auto p-4">
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <div class="p-4 rounded flex flex-col items-center">
+        <div className=" mx-auto p-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="p-4 rounded flex flex-col items-center">
               <a
                 href="https://www.freecodecamp.org/certification/AshtinJW/responsive-web-design"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 <GlobeAltIcon className="w-20 h-20" />
               </a>
 
               <p>Responsive Web Design</p>
             </div>
-            <div class=" p-4 rounded flex flex-col items-center">
+            <div className=" p-4 rounded flex flex-col items-center">
               <a
                 href="https://www.freecodecamp.org/certification/AshtinJW/javascript-algorithms-and-data-structures"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 <CodeBracketIcon className="w-20 h-20" />
               </a>
@@ -42,10 +42,10 @@ export default function Certifications() {
                 Legacy JavaScript Algorithms and Data Structures Certification
               </p>
             </div>
-            <div class="p-4 rounded flex flex-col items-center">
-              <a href="#" target="_blank">
+            <div className="p-4 rounded flex flex-col items-center">
+              <div>
                 <ClipboardDocumentCheckIcon className="w-20 h-20" />
-              </a>
+              </div>
               <p>Front End Development Libraries</p>
             </div>
           </div>

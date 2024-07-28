@@ -30,10 +30,10 @@ export default function About() {
               Work With Me
             </a>
           </div>
-          <div class="flex pl-14 pt-2 space-x-4">
+          <div className="flex pl-14 pt-2 space-x-4">
             <div>
               <a href="https://github.com/AshtinJW-Dev" target="blank">
-                <i class="fa-brands fa-github text-xl hover:text-green-700"></i>
+                <i className="fa-brands fa-github text-xl hover:text-green-700"></i>
               </a>
             </div>
             <div>
@@ -41,7 +41,7 @@ export default function About() {
                 href="https://www.linkedin.com/in/ashtin-walter-b60709250/"
                 target="blank"
               >
-                <i class="fa-brands fa-linkedin text-xl hover:text-green-700"></i>
+                <i className="fa-brands fa-linkedin text-xl hover:text-green-700"></i>
               </a>
             </div>
           </div>

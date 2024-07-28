@@ -43,7 +43,7 @@ export default function Projects() {
                     {website.title}
                   </h1>
                   <p className="leading-relaxed">{website.description}</p>
-                  <div class="flex justify-center">
+                  <div className="flex justify-center">
                     <div>{website.skills}</div>
                   </div>
                 </div>
@@ -76,7 +76,7 @@ export default function Projects() {
                     {project.title}
                   </h1>
                   <p className="leading-relaxed">{project.description}</p>
-                  <div class="flex justify-center">
+                  <div className="flex justify-center">
                     <div>{project.skills}</div>
                   </div>
                 </div>
