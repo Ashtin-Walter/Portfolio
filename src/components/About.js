@@ -18,16 +18,16 @@ export default function About() {
           </p>
           <div className="flex justify-center">
             <a
-              href="#contact"
+              href="#projects"
               className="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg"
             >
-              Work With Me
+              See My Past Work
             </a>
             <a
-              href="#projects"
+              href="#contact"
               className="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg"
             >
-              See My Past Work
+              Work With Me
             </a>
           </div>
           <div class="flex pl-14 pt-2 space-x-4">
@@ -37,7 +37,10 @@ export default function About() {
               </a>
             </div>
             <div>
-              <a href="https://www.linkedin.com/in/ashtin-walter-b60709250/" target="blank">
+              <a
+                href="https://www.linkedin.com/in/ashtin-walter-b60709250/"
+                target="blank"
+              >
                 <i class="fa-brands fa-linkedin text-xl hover:text-green-700"></i>
               </a>
             </div>
@@ -47,7 +50,7 @@ export default function About() {
           <img
             className="object-cover object-center rounded"
             alt="ashtin"
-            src="images/ash-pic.jpg"
+            src="images/ash-pic.png"
           />
         </div>
       </div>
