@@ -1,21 +1,6 @@
 export const websites = [
   {
-    title: "Crater Bush Villa",
-    subtitle: "Web Development & Graphic Design",
-    description:
-      "Crater Bush Villa was a landmark project for me, allowing me to dive deep into both web development and graphic design. It was a multi-page website that pushed me to learn React and helped me gain experience in building interactive, dynamic user interfaces.",
-    image: "images/projects/crater collage.png",
-    link: "https://craterbushvilla.co.za/",
-  },
-  {
-    title: "The Kushader Co.",
-    subtitle: "Web Development, Digital Marketing, Graphic Design",
-    description:
-      "The Kushader Co. project allowed me to contribute to various aspects of their business. I managed their social media presence, designed product packaging, and improved their Wix website with my web development skills. This project gave me a holistic view of how digital presence and branding come together.",
-    image: "images/projects/kushader collage.png",
-    link: "https://www.thekushaderco.co.za/",
-  },
-  {
+    id: 1,
     title: "Gras-Groen",
     subtitle: "Web Development & Branding",
     description:
@@ -24,32 +9,55 @@ export const websites = [
     link: "https://gras-groen.co.za/",
   },
   {
+    id: 2,
+    title: "Crater Bush Villa",
+    subtitle: "Web Development & Graphic Design",
+    description:
+      "Crater Bush Villa was a landmark project for me, allowing me to dive deep into both web development and graphic design. It was a multi-page website that pushed me to learn React and helped me gain experience in building interactive, dynamic user interfaces.",
+    image: "images/projects/crater collage.png",
+    link: "https://craterbushvilla.co.za/",
+  },
+  {
+    id: 3,
     title: "Annie's Social Healthcare",
     subtitle: "Web Development & UX/UI Design",
     description:
       "Annie's Social Healthcare was a rewarding project focused on improving user experience and accessibility. I worked closely with the team to develop a responsive website that promotes their healthcare services, while also ensuring the design was intuitive and welcoming for patients and caregivers alike.",
     image: "images/projects/annies-social-healthcare.png",
-    link: "https://github.com/AshtinJW-Dev/Annie-s-Social-Health-Care",
+    link: "https://annies-healthcare.netlify.app/",
   },
   {
+    id: 4,
     title: "Johnny Green Thumb",
     subtitle: "Web Development & Branding",
     description:
       "Johnny Green Thumb is a project where I built a beautiful, easy-to-navigate website to showcase gardening services and tips. The website had to reflect the brand’s personality, so I focused on creating a fun, green, and nature-inspired design with a focus on providing useful gardening information.",
     image: "images/projects/johnny-green-thumb.png",
     link: "https://johnnygreenthumbza.co.za/",
-  },{
+  },
+  {
+    id: 5,
     title: "Ngena Ekasi Tours",
     subtitle: "Web Development, Digital Marketing, Graphic Design",
     description:
       "Ngena Ekasi Tours was one of my first projects where I learned how to blend web development, digital marketing, and graphic design. Working with the team, I helped create a user-friendly website and participated in crafting their digital marketing strategy, all while gaining valuable insights into the tourism industry.",
     image: "images/projects/ngena collage.png",
-    link: "https://github.com/AshtinJW-Dev/Ngena-Ekasi-Tours",
-  }
+    link: "https://ngena-ekasi-tours.netlify.app/",
+  },
+  {
+    id: 6,
+    title: "The Kushader Co.",
+    subtitle: "Web Development, Digital Marketing, Graphic Design",
+    description:
+      "The Kushader Co. project allowed me to contribute to various aspects of their business. I managed their social media presence, designed product packaging, and improved their Wix website with my web development skills. This project gave me a holistic view of how digital presence and branding come together.",
+    image: "images/projects/kushader collage.png",
+    link: "https://www.thekushaderco.co.za/",
+  },
 ];
 
 export const projects = [
   {
+    id: 1,
     title: "To-Do List",
     subtitle: "Personal Project",
     description:
@@ -58,6 +66,7 @@ export const projects = [
     link: "https://ajw-todo.netlify.app/",
   },
   {
+    id: 2,
     title: "Muncharoo",
     subtitle: "Full-Stack Recipe Website",
     description:
@@ -122,18 +131,29 @@ export const graphicDesign = [
   "Content Creation",
 ];
 
-
 export const testimonials = [
   {
-    quote: '"I thank God for introducing you to me, brother. Glory be to him."',
-   
+    id: 1,
+    quote: '"Working with you has been a game-changer for our business. Your expertise and dedication are unmatched."',
     name: "Thandisizwe Dhano",
     company: "Ngena Ekasi Tours",
   },
   {
-    quote: '"We will carry your name high."',
-    
+    id: 2,
+    quote: '"Your work exceeded our expectations. We are thrilled with the results and look forward to future projects together."',
     name: "Lana Rodel",
     company: "Crater Bush Villa",
+  },
+  {
+    id: 3,
+    quote: '"Your creativity and professionalism have significantly boosted our brand. Thank you for your outstanding work."',
+    name: "Jasmine Budd",
+    company: "The Kushader Co.",
+  },
+  {
+    id: 4,
+    quote: '"The website you built for us is fantastic! It perfectly captures our brand and has been a hit with our customers."',
+    name: "Johnny",
+    company: "Johnny Green Thumb",
   },
 ];

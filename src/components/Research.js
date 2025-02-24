@@ -3,27 +3,25 @@ import React from "react";
 
 const books = [
   { title: "Steve Jobs", author: "Walter Isaacson", progress: "70%" },
-  { title: "Atomic Habits", author: "James Clear", progress: "10%" },
 ];
 
 const courses = [
   { name: "Front End Development Libraries", platform: "Free Code Camp", link: "https://www.freecodecamp.org/learn/front-end-development-libraries" },
-  
 ];
 
 const newTech = ["Nginx", "Self-Hosting", "AI Tools"];
 
 export default function LearningResearch() {
   return (
-    <section id="learning-research" className="py-10 bg-gray-900 text-white">
+    <section id="learning-research" className="py-12 bg-gray-900 text-white">
       <div className="container px-5 mx-auto">
-        <div className="text-center mb-10">
+        <div className="text-center mb-12">
           <LightBulbIcon className="w-12 h-12 mx-auto text-yellow-400 mb-4" />
           <h1 className="sm:text-4xl text-3xl font-bold title-font mb-4">
-            Learning & Research
+            Continuous Learning & Research
           </h1>
           <p className="text-lg leading-relaxed max-w-2xl mx-auto text-gray-300">
-            Exploring new technologies, improving skills, and staying ahead in the industry.
+            Delving into new technologies, honing skills, and staying ahead in the ever-evolving tech landscape.
           </p>
         </div>
 
@@ -31,7 +29,7 @@ export default function LearningResearch() {
           {/* Books */}
           <div className="p-6 bg-gray-800 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold flex items-center mb-4">
-              <BookOpenIcon className="w-6 h-6 text-blue-400 mr-2" /> Books I'm Reading
+              <BookOpenIcon className="w-6 h-6 text-blue-400 mr-2" /> Books I'm Currently Reading
             </h2>
             <ul className="space-y-3 text-gray-300">
               {books.map((book, index) => (
@@ -45,7 +43,7 @@ export default function LearningResearch() {
           {/* Courses */}
           <div className="p-6 bg-gray-800 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold flex items-center mb-4">
-              <PlayCircleIcon className="w-6 h-6 text-green-400 mr-2" /> Courses I'm Taking
+              <PlayCircleIcon className="w-6 h-6 text-green-400 mr-2" /> Courses I'm Enrolled In
             </h2>
             <ul className="space-y-3 text-gray-300">
               {courses.map((course, index) => (

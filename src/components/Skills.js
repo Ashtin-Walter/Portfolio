@@ -5,9 +5,10 @@ import {
   ServerStackIcon,
   CursorArrowRaysIcon,
   PaintBrushIcon,
+  WrenchScrewdriverIcon,
 } from "@heroicons/react/24/solid";
 import React from "react";
-import { frontend, backend, digitalMarketing, graphicDesign } from "../data";
+import { frontend, backend, digitalMarketing, graphicDesign, devOps } from "../data";
 
 export default function Skills() {
   return (
@@ -19,39 +20,48 @@ export default function Skills() {
             Skills & Technologies
           </h1>
           <p className="text-lg text-gray-400 mt-2">
-            A versatile full-stack developer with an eye for design and a knack for problem-solving.
+            A versatile full-stack developer with a keen eye for design and a passion for solving complex problems.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {/* Frontend Development */}
-          <SkillCard 
-            icon={<ComputerDesktopIcon className="w-6 h-6 text-blue-400" />} 
-            title="Frontend Development" 
-            skills={frontend} 
+          <SkillCard
+            icon={<ComputerDesktopIcon className="w-6 h-6 text-blue-400" />}
+            title="Frontend Development"
+            skills={frontend}
           />
 
           {/* Backend Development */}
-          <SkillCard 
-            icon={<ServerStackIcon className="w-6 h-6 text-purple-400" />} 
-            title="Backend Development" 
-            skills={backend} 
+          <SkillCard
+            icon={<ServerStackIcon className="w-6 h-6 text-purple-400" />}
+            title="Backend Development"
+            skills={backend}
           />
 
+          {/* DevOps */}
+          <SkillCard
+            icon={<WrenchScrewdriverIcon className="w-6 h-6 text-green-400" />}
+            title="DevOps"
+            skills={devOps}
+          />
+
+
           {/* Digital Marketing */}
-          <SkillCard 
-            icon={<CursorArrowRaysIcon className="w-6 h-6 text-yellow-400" />} 
-            title="Digital Marketing" 
-            skills={digitalMarketing} 
+          <SkillCard
+            icon={<CursorArrowRaysIcon className="w-6 h-6 text-yellow-400" />}
+            title="Digital Marketing"
+            skills={digitalMarketing}
           />
 
           {/* Graphic Design */}
-          <SkillCard 
-            icon={<PaintBrushIcon className="w-6 h-6 text-pink-400" />} 
-            title="Graphic Design" 
-            skills={graphicDesign} 
+          <SkillCard
+            icon={<PaintBrushIcon className="w-6 h-6 text-pink-400" />}
+            title="Graphic Design"
+            skills={graphicDesign}
           />
         </div>
+
       </div>
     </section>
   );

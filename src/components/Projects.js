@@ -10,11 +10,11 @@ export default function Projects() {
         <div className="flex flex-col w-full mb-10">
           <BeakerIcon className="mx-auto w-10 mb-4 text-green-400" />
           <h1 className="sm:text-4xl text-3xl font-medium title-font text-white">
-            What I've Built.
+            My Projects
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-            I’ve worked on a range of projects—both for clients and personal growth. 
-            Here are some of the best ones.
+            I’ve worked on a diverse range of projects, both for clients and personal growth. 
+            Here are some of the highlights.
           </p>
         </div>
 
@@ -43,10 +43,11 @@ function ProjectSection({ title, projects }) {
     </div>
   );
 }
+
 function ProjectCard({ project }) {
   return (
-    <a href={project.link} target="_blank" rel="noopener noreferrer" className="relative group">
-      <div className="relative h-64 w-full overflow-hidden rounded-lg border-4 border-gray-800 bg-gradient-to-br from-gray-800 to-gray-900">
+    <a href={project.link} target="_blank" rel="noopener noreferrer" className="relative group" aria-label={`View details of ${project.title}`}>
+      <div className="relative h-64 w-full overflow-hidden rounded-lg border-4 border-gray-800 bg-gradient-to-br from-gray-800 to-gray-900 transition-transform transform group-hover:scale-105">
         <div className="absolute inset-0 flex flex-col items-center justify-center p-4 transition-all duration-300 bg-black bg-opacity-60 group-hover:bg-opacity-80">
           <h3 className="text-green-400 text-sm font-medium">{project.subtitle}</h3>
           <h2 className="text-lg font-semibold text-white">{project.title}</h2>
