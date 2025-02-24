@@ -28,10 +28,10 @@ export default function Landing() {
               Skills & Technologies
             </a>
             <div className="flex pl-14 pt-2 space-x-4">
-              <a href="https://github.com/AshtinJW-Dev" target="_blank" aria-label="GitHub Profile">
+              <a href="https://github.com/AshtinJW-Dev" target="_blank"  rel="noreferrer" aria-label="GitHub Profile">
                 <i className="fa-brands fa-github text-xl hover:text-green-700"></i>
               </a>
-              <a href="https://www.linkedin.com/in/ashtin-walter-b60709250/" target="_blank" aria-label="LinkedIn Profile">
+              <a href="https://www.linkedin.com/in/ashtin-walter-b60709250/" target="_blank" rel="noreferrer" aria-label="LinkedIn Profile">
                 <i className="fa-brands fa-linkedin text-xl hover:text-green-700"></i>
               </a>
             </div>
