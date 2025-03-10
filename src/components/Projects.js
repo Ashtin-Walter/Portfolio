@@ -1,6 +1,6 @@
 import { BeakerIcon } from "@heroicons/react/24/solid";
 import React from "react";
-import { websites, projects } from "../data";
+import { websites, projects, games } from "../data";
 
 export default function Projects() {
   return (
@@ -24,6 +24,8 @@ export default function Projects() {
           <ProjectSection title="Websites" projects={websites} />
           {/* Personal Projects Section */}
           <ProjectSection title="Personal Projects" projects={projects} />
+          {/* Games Section */}
+          <ProjectSection title="Games" projects={games} />
         </div>
       </div>
     </section>

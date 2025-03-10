@@ -6,7 +6,7 @@ export default function Testimonials() {
   return (
     <section id="testimonials">
       <div className="container px-5 py-10 mx-auto text-center">
-        <UserIcon className="w-10 inline-block mb-4" />
+        <UserIcon className="w-10 inline-block mb-4 text-green-400" />
         <h1 className="sm:text-4xl text-3xl font-medium title-font text-white mb-12">
           Testimonials
         </h1>

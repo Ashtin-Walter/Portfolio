@@ -24,18 +24,18 @@ export default function Skills() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {/* Frontend Development */}
           <SkillCard
             icon={<ComputerDesktopIcon className="w-6 h-6 text-blue-400" />}
-            title="Frontend Development"
+            title="Frontend Dev"
             skills={frontend}
           />
 
           {/* Backend Development */}
           <SkillCard
             icon={<ServerStackIcon className="w-6 h-6 text-purple-400" />}
-            title="Backend Development"
+            title="Backend Dev"
             skills={backend}
           />
 
@@ -45,7 +45,6 @@ export default function Skills() {
             title="DevOps"
             skills={devOps}
           />
-
 
           {/* Digital Marketing */}
           <SkillCard
@@ -77,8 +76,8 @@ function SkillCard({ icon, title, skills }) {
       <div className="flex flex-wrap justify-center">
         {skills?.map((skill) => (
           <div key={skill} className="w-full">
-            <div className="bg-gray-700 rounded flex p-2 h-full items-center">
-              <CheckBadgeIcon className="text-green-400 w-6 h-6 flex-shrink-0 mr-3" />
+            <div className="bg-gray-700 rounded flex flex-col items-center p-2 h-full">
+              <CheckBadgeIcon className="text-green-400 w-6 h-6 mb-2" />
               <span className="text-sm font-medium">{skill}</span>
             </div>
           </div>

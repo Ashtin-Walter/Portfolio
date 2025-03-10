@@ -65,6 +65,7 @@ export const projects = [
     image: "images/projects/to-do-collage.png",
     link: "https://ajw-todo.netlify.app/",
   },
+
   {
     id: 2,
     title: "Muncharoo",
@@ -74,6 +75,7 @@ export const projects = [
     image: "images/projects/muncharoo-collage.png",
     link: "https://github.com/AshtinJW-Dev/Muncharoo",
   },
+  
 ];
 
 export const frontend = [
@@ -87,7 +89,7 @@ export const frontend = [
   "Bootstrap",
   "ShadCN",
   "Redux",
-  "Framer Motion",
+  
 ];
 
 export const backend = [
@@ -156,4 +158,17 @@ export const testimonials = [
     name: "Johnny",
     company: "Johnny Green Thumb",
   },
+];
+
+export const games = [
+  {
+    id: 1,
+    title: "Tenfinity",
+    subtitle: "Game Development",
+    description:
+      "Tenfinity is an addictive grid-based puzzle game inspired by the classic 1010!, built with React. Players strategically place blocks to clear lines and score points, delivering a smooth, engaging experience. This project sharpened my React skills and deepened my insight into modern game development.",
+    image: "images/projects/tenfinity.png",
+    link: "https://tenfinity.netlify.app/",
+  },
+  // Add more games here if needed
 ];
