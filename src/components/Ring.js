@@ -1,0 +1,29 @@
+import React from "react";
+import PropTypes from "prop-types";
+import "./styles/components.css";
+
+function Ring({ altText = "Walter House Logo" }) {
+  return (
+    <div className="container ring-container">
+      <div className="ring rounded-full" role="presentation">
+        <i aria-hidden="true"></i>
+        <i aria-hidden="true"></i>
+        <i aria-hidden="true"></i>
+        <div className="image">
+          <img 
+            src="images/ash-pic.png" 
+            className="img-fluid rounded-full" 
+            alt={altText}
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+Ring.propTypes = {
+  altText: PropTypes.string,
+};
+
+export default Ring;

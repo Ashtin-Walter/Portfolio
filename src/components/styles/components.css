@@ -1,0 +1,77 @@
+/* Ring Effect */
+.ring-container {
+  width: clamp(300px, 40vh, 500px);
+  height: clamp(300px, 40vh, 500px);
+  perspective: 1000px;
+}
+
+.ring {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+.ring i {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(2px);
+  will-change: transform;
+}
+
+.ring i:nth-child(1) {
+  border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+  animation: animate 6s linear infinite, pulse 2s ease-in-out infinite;
+}
+
+.ring i:nth-child(2) {
+  border-radius: 41% 44% 56% 59% / 38% 62% 63% 37%;
+  animation: animate 4s linear infinite, pulse 2s ease-in-out infinite 0.6s;
+}
+
+.ring i:nth-child(3) {
+  border-radius: 41% 44% 56% 59% / 38% 62% 63% 37%;
+  animation: animate2 10s linear infinite, pulse 2s ease-in-out infinite 1.2s;
+}
+
+.ring:hover i {
+  border: 4px solid var(--accent-color);
+  filter: drop-shadow(0 0 15px var(--accent-color));
+  transition: all 0.3s ease-out;
+}
+
+@keyframes animate {
+  0% { transform: rotate(0deg) translateZ(10px); }
+  100% { transform: rotate(360deg) translateZ(10px); }
+}
+
+@keyframes animate2 {
+  0% { transform: rotate(360deg) translateZ(20px); }
+  100% { transform: rotate(0deg) translateZ(20px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.05) rotate(180deg); }
+}
+
+.ring .image {
+  position: absolute;
+  width: 95%;    /* Changed from 65% */
+  height: 95%;   /* Changed from 65% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+  transition: transform 0.3s ease-out;
+}
+
+.ring:hover .image {
+  transform: scale(1.1);
+}
