@@ -168,7 +168,7 @@ export const games = [
     description:
       "Tenfinity is an addictive grid-based puzzle game inspired by the classic 1010!, built with React. Players strategically place blocks to clear lines and score points, delivering a smooth, engaging experience. This project sharpened my React skills and deepened my insight into modern game development.",
     image: "images/projects/tenfinity.png",
-    link: "https://tenfinity.netlify.app/",
+    link: "/tenfinity",
   },
   // Add more games here if needed
 ];
