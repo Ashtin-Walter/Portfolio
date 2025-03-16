@@ -1,5 +1,5 @@
 import { BeakerIcon } from "@heroicons/react/24/solid";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { websites, projects, games } from "../data";
 
 export default function Projects() {
