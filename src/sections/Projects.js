@@ -1,5 +1,5 @@
 import { BeakerIcon } from "@heroicons/react/24/solid";
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { websites, projects, games } from "../data";
 
 export default function Projects() {
@@ -49,6 +49,19 @@ function ProjectSection({ title, projects }) {
 }
 
 function ProjectCard({ project }) {
+  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseMove = useCallback((e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    setMousePosition({
+      x: (x / rect.width) * 100,
+      y: (y / rect.height) * 100,
+    });
+  }, []);
+
   const renderSkills = () => {
     if (!project.skills) return null;
     
@@ -74,15 +87,26 @@ function ProjectCard({ project }) {
       rel="noopener noreferrer"
       className="relative group block"
       aria-label={`View ${project.title} project`}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => {
+        setIsHovering(false);
+        setMousePosition({ x: 50, y: 50 });
+      }}
     >
       <div className="relative h-72 w-full overflow-hidden rounded-lg border-2 border-gray-800 bg-gradient-to-br from-gray-800 to-gray-900 transition-all duration-300 group-hover:border-green-400 group-hover:shadow-lg group-hover:shadow-green-400/20">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="absolute inset-0 w-full h-full object-cover opacity-20 transition-opacity duration-300 group-hover:opacity-30"
-          loading="lazy"
+        <div 
+          className="absolute inset-0 z-10 transition-all duration-200 ease-out"
+          style={{
+            background: isHovering
+              ? `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(74, 222, 128, 0.3), transparent 25%)`
+              : 'none',
+            opacity: isHovering ? 1 : 0,
+            mixBlendMode: 'plus-lighter',
+          }}
         />
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 bg-black bg-opacity-70 transition-all duration-300 group-hover:bg-opacity-80">
+        
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 bg-black/50 backdrop-blur-sm transition-all duration-300 group-hover:bg-black/60">
           <span className="px-3 py-1 text-xs font-medium bg-green-400 text-gray-900 rounded-full mb-4">
             {project.subtitle}
           </span>
