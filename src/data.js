@@ -63,7 +63,7 @@ export const projects = [
     description:
       "A simple yet functional To-Do List app built using HTML, CSS, and JavaScript. It allows users to create, manage, and store tasks in the browser cache, ensuring tasks remain accessible even after closing the app.",
     image: "images/projects/to-do-collage.png",
-    link: "https://ajw-todo.netlify.app/",
+    link: "/todolist",
   },
 
   {
