@@ -24,7 +24,7 @@ export default function LearningResearch() {
     <section id="learning-research" className="py-12 bg-gray-900 text-white">
       <div className="container px-5 mx-auto">
         <div className="text-center mb-12">
-          <LightBulbIcon className="w-12 h-12 mx-auto text-yellow-400 mb-4" />
+          <div className="animate-bounce-slow"><LightBulbIcon className="w-12 h-12 mx-auto text-yellow-400 mb-4" /></div>
           <h1 className="sm:text-4xl text-3xl font-bold title-font mb-4">
             Continuous Learning & Research
           </h1>

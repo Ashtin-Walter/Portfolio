@@ -26,7 +26,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="bg-gray-800 md:sticky top-0 z-10 transition-all duration-300">
+    <header className="bg-gray-800 md:sticky top-0 z-50 transition-all duration-300">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <p className="title-font font-medium text-white mb-4 md:mb-0">
           <a href="#about" className="ml-3 text-xl hover:text-gray-400 transition-colors duration-300" aria-label="About Ashtin Walter">

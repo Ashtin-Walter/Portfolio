@@ -170,5 +170,14 @@ export const games = [
     image: "images/projects/tenfinity.png",
     link: "/tenfinity",
   },
+  {
+    id: 2,
+    title: "Flappy Ostrich",
+    subtitle: "Game Development",
+    description:
+      "Flappy Ostrich is my take on the classic Flappy Bird game, built with Nextjs and TailwindCSS. Players guide an ostrich through obstacles by timing their jumps perfectly. This project helped me learn game physics, collision detection, and animation principles while creating an entertaining gaming experience.",
+    image: "images/projects/flappy-ostrich.png",
+    link: "/flappy-ostrich",
+}
   // Add more games here if needed
 ];

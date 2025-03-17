@@ -8,7 +8,7 @@ export default function Projects() {
       <div className="container px-5 mx-auto text-center lg:px-40">
         {/* Section Header */}
         <div className="flex flex-col w-full mb-10">
-          <BeakerIcon className="mx-auto w-10 mb-4 text-green-400" />
+          <div className="animate-bounce-slow"><BeakerIcon className="mx-auto w-10 mb-4 text-green-400" /></div>
           <h1 className="sm:text-4xl text-3xl font-medium title-font text-white">
             My Projects
           </h1>
@@ -96,7 +96,7 @@ function ProjectCard({ project }) {
     >
       <div className="relative h-72 w-full overflow-hidden rounded-lg border-2 border-gray-800 bg-gradient-to-br from-gray-800 to-gray-900 transition-all duration-300 group-hover:border-green-400 group-hover:shadow-lg group-hover:shadow-green-400/20">
         <div 
-          className="absolute inset-0 z-10 transition-all duration-200 ease-out"
+          className="absolute inset-0 z-0 transition-all duration-200 ease-out"
           style={{
             background: isHovering
               ? `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(74, 222, 128, 0.3), transparent 25%)`
@@ -106,7 +106,7 @@ function ProjectCard({ project }) {
           }}
         />
         
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 bg-black/50 backdrop-blur-sm transition-all duration-300 group-hover:bg-black/60">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 bg-black/50 backdrop-blur-sm transition-all duration-300 group-hover:bg-black/60">
           <span className="px-3 py-1 text-xs font-medium bg-green-400 text-gray-900 rounded-full mb-4">
             {project.subtitle}
           </span>
