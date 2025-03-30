@@ -1,9 +1,14 @@
 import { useState } from "react";
-
 import { UserIcon, AcademicCapIcon, CodeBracketIcon, CogIcon } from "@heroicons/react/24/solid";
+import AnimatedNumber from "../components/AnimatedNumber";
+import useInView from "../hooks/useInView";
 
 export default function About() {
     const [activeTab, setActiveTab] = useState("stats");
+    const [statsRef, isStatsInView] = useInView({
+        threshold: 0.2,
+        triggerOnce: true
+    });
 
     const tabs = [
         { id: "stats", label: "Statistics" },
@@ -74,6 +79,7 @@ export default function About() {
                     <div className="border-t border-gray-200 dark:border-gray-600">
                         {activeTab === "stats" && (
                             <div 
+                                ref={statsRef}
                                 id="stats-panel" 
                                 role="tabpanel" 
                                 className="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800 transition-all duration-300"
@@ -82,7 +88,14 @@ export default function About() {
                                 <dl className="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
                                     {stats.map((stat, index) => (
                                         <div key={index} className="flex flex-col items-center justify-center">
-                                            <dt className="mb-2 text-3xl font-extrabold">{stat.value}</dt>
+                                            <dt className="mb-2 text-3xl font-extrabold">
+                                                {stat.value === "?" ? "?" : (
+                                                    <AnimatedNumber 
+                                                        value={stat.value}
+                                                        start={isStatsInView}
+                                                    />
+                                                )}
+                                            </dt>
                                             <dd className="text-gray-500 dark:text-gray-400">{stat.label}</dd>
                                         </div>
                                     ))}

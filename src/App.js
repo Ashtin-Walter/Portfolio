@@ -9,6 +9,7 @@ import Testimonials from "./sections/Testimonials";
 import Research from "./sections/Research";
 import Blog from "./sections/Blog";
 import Footer from "./sections/Footer";
+import Timeline from "./sections/Timeline";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -18,6 +19,7 @@ export default function App() {
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <Landing />
       <About />
+      <Timeline />
       <Projects />
       <Skills />
       <Research />
