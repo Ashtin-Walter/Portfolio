@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import {
   AcademicCapIcon,
   BuildingStorefrontIcon,
@@ -7,7 +7,7 @@ import {
   ComputerDesktopIcon
 } from '@heroicons/react/24/solid';
 
-const ExperienceTimeline = () => {
+const ExperienceTimeline = memo(() => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const experiences = [
@@ -56,7 +56,7 @@ const ExperienceTimeline = () => {
       icon: CodeBracketIcon
     },
     {
-      company: 'Potentiam',
+      company: 'Artlogic',
       position: 'Product Support Engineer',
       period: 'Apr 2025 - Present',
       year: '2025',
@@ -70,10 +70,10 @@ const ExperienceTimeline = () => {
 
   return (
     <section id="experience" className="max-w-6xl mx-auto py-16 px-4">
-      <h2 className="text-3xl font-bold text-center mb-16">Work Experience</h2>
+      <h2 className="text-3xl font-bold text-center mb-16 text-gray-900 dark:text-white">Work Experience</h2>
       
       <div className="relative">
-        <div className="absolute top-8 left-0 w-full h-0.5 bg-gray-200 dark:bg-gray-800" />
+        <div className="absolute top-8 left-0 w-full h-0.5 bg-gray-200 dark:bg-gray-700" />
         
         <div className="flex justify-between relative">
           {experiences.map((exp, index) => (
@@ -83,15 +83,15 @@ const ExperienceTimeline = () => {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div className="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center text-white hover:bg-green-600 transition-colors">
+                <div className="w-16 h-16 rounded-full bg-green-500 dark:bg-green-600 flex items-center justify-center text-white hover:bg-green-600 dark:hover:bg-green-700 transition-colors">
                   <exp.icon className="h-8 w-8" />
                 </div>
-                <p className="text-sm font-medium text-center mt-2">{exp.year}</p>
+                <p className="text-sm font-medium text-center mt-2 text-gray-700 dark:text-gray-300">{exp.year}</p>
                 
                 {hoveredIndex === index && (
-                  <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-80 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl">
+                  <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-80 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700">
                     <div className="space-y-3">
-                      <h3 className="font-semibold text-lg">{exp.company}</h3>
+                      <h3 className="font-semibold text-lg text-gray-900 dark:text-white">{exp.company}</h3>
                       <div>
                         <p className="text-green-600 dark:text-green-400 text-sm font-medium">{exp.position}</p>
                         <p className="text-xs text-gray-500 dark:text-gray-400">{exp.period}</p>
@@ -100,7 +100,7 @@ const ExperienceTimeline = () => {
                       <p className="text-sm text-gray-600 dark:text-gray-300">{exp.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {exp.skills.map((skill, i) => (
-                          <span key={i} className="text-xs bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded-full">
+                          <span key={i} className="text-xs bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-2 py-1 rounded-full">
                             {skill}
                           </span>
                         ))}
@@ -115,6 +115,6 @@ const ExperienceTimeline = () => {
       </div>
     </section>
   );
-};
+});
 
 export default ExperienceTimeline;

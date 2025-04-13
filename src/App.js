@@ -1,32 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense, useEffect } from "react"; // Import useEffect
 import Landing from "./sections/Landing";
-import About from "./sections/About";
-import Contact from "./sections/Contact";
 import Navbar from "./sections/Navbar";
-import Projects from "./sections/Projects";
-import Skills from "./sections/Skills";
-import Testimonials from "./sections/Testimonials";
-import Research from "./sections/Research";
-import Blog from "./sections/Blog";
 import Footer from "./sections/Footer";
-import Timeline from "./sections/Timeline";
+import ScrollToTopButton from "./components/ScrollToTopButton"; // Import the new component
+
+// Lazy load less critical sections for performance
+const LazyAbout = lazy(() => import("./sections/About"));
+const LazyTimeline = lazy(() => import("./sections/Timeline"));
+const LazyProjects = lazy(() => import("./sections/Projects"));
+const LazySkills = lazy(() => import("./sections/Skills"));
+const LazyResearch = lazy(() => import("./sections/Research"));
+const LazyTestimonials = lazy(() => import("./sections/Testimonials"));
+const LazyContact = lazy(() => import("./sections/Contact"));
+const Blog = lazy(() => import("./sections/Blog"));
 
 export default function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  // Initialize state from localStorage or default to true (dark mode)
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme ? savedTheme === 'dark' : true;
+  });
+
+  // Effect to update localStorage and HTML class when isDarkMode changes
+  useEffect(() => {
+    const root = window.document.documentElement;
+    const currentTheme = isDarkMode ? 'dark' : 'light';
+    root.classList.remove(isDarkMode ? 'light' : 'dark');
+    root.classList.add(currentTheme);
+    localStorage.setItem('theme', currentTheme);
+  }, [isDarkMode]);
+
+  // Determine theme class based on isDarkMode state (for main element if needed, though less critical now)
+  const themeClass = isDarkMode ? 'bg-gray-900 text-gray-400' : 'bg-gray-100 text-gray-800';
 
   return (
-    <main className={`${isDarkMode ? 'bg-gray-900 text-gray-400' : 'bg-gray-100 text-gray-800'} body-font transition-colors duration-300`}>
+    // Apply theme class and transition properties to the main element
+    <main className={`${themeClass} body-font transition-colors duration-300`}>
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <Landing />
-      <About />
-      <Timeline />
-      <Projects />
-      <Skills />
-      <Research />
-      <Blog />
-      <Testimonials />
-      <Contact />
+      <Suspense fallback={<div className="py-20 text-center">Loading...</div>}>
+        <LazyAbout />
+        <LazyTimeline />
+        <LazyProjects />
+        <LazySkills />
+        <LazyResearch />
+        <Blog />
+        <LazyTestimonials />
+        <LazyContact />
+      </Suspense>
       <Footer />
+      <ScrollToTopButton isDarkMode={isDarkMode} /> {/* Add the button here */}
     </main>
   );
 }

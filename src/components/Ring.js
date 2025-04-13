@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import "./styles/components.css";
 
-function Ring({ altText = "Walter House Logo" }) {
+const Ring = memo(function Ring({ altText = "Walter House Logo" }) {
   return (
     <div className="container ring-container">
       <div className="ring rounded-full" role="presentation">
@@ -20,7 +20,7 @@ function Ring({ altText = "Walter House Logo" }) {
       </div>
     </div>
   );
-}
+});
 
 Ring.propTypes = {
   altText: PropTypes.string,

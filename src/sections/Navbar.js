@@ -1,7 +1,7 @@
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import { ArrowRightIcon, SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 import React, { useState, useEffect } from "react";
 
-export default function Navbar() {
+export default function Navbar({ isDarkMode, setIsDarkMode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
 
@@ -26,17 +26,17 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="bg-gray-800 md:sticky top-0 z-50 transition-all duration-300">
+    <header className="bg-white dark:bg-gray-800 md:sticky top-0 z-50 transition-colors duration-300 shadow-sm dark:shadow-none">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <p className="title-font font-medium text-white mb-4 md:mb-0">
-          <a href="#about" className="ml-3 text-xl hover:text-gray-400 transition-colors duration-300" aria-label="About Ashtin Walter">
+        <p className="title-font font-medium text-gray-900 dark:text-white mb-4 md:mb-0">
+          <a href="#about" className="ml-3 text-xl hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300" aria-label="About Ashtin Walter">
             Ashtin Walter
           </a>
         </p>
         
         {/* Mobile menu button */}
         <button
-          className="md:hidden ml-auto text-white"
+          className="md:hidden ml-auto text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-white"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -45,24 +45,38 @@ export default function Navbar() {
           </svg>
         </button>
 
-        <nav className={`${isOpen ? 'flex' : 'hidden'} md:flex w-full md:w-auto md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 flex-col md:flex-row items-center text-base`}>
+        <nav className={`${isOpen ? 'flex' : 'hidden'} md:flex w-full md:w-auto md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-200 dark:md:border-gray-700 flex-col md:flex-row items-center text-base`}>
           {["projects", "skills", "learning-research", "testimonials"].map((section) => (
             <a
               key={section}
               href={`#${section}`}
               className={`mr-5 py-2 md:py-0 transition-colors duration-300 ${
-                activeSection === section ? 'text-white' : 'text-gray-400 hover:text-white'
+                activeSection === section ? 'text-green-600 dark:text-white font-medium' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
               }`}
               aria-label={`View ${section.charAt(0).toUpperCase() + section.slice(1)}`}
+              aria-current={activeSection === section ? "page" : undefined} // Add aria-current
             >
               {section.charAt(0).toUpperCase() + section.slice(1).replace('-', ' ')}
             </a>
           ))}
         </nav>
 
+        {/* Dark/Light Mode Toggle */}
+        <button 
+          onClick={() => setIsDarkMode(!isDarkMode)}
+          className="mr-4 p-2 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+          aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {isDarkMode ? (
+            <SunIcon className="w-5 h-5 text-yellow-300" />
+          ) : (
+            <MoonIcon className="w-5 h-5 text-indigo-500" />
+          )}
+        </button>
+
         <a
           href="#contact"
-          className="inline-flex items-center bg-gray-700 border-0 py-2 px-4 focus:outline-none hover:bg-gray-600 rounded text-white transition-colors duration-300 mt-4 md:mt-0"
+          className="inline-flex items-center bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-transparent py-2 px-4 focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-600 rounded text-gray-800 dark:text-white transition-colors duration-300 mt-4 md:mt-0"
           aria-label="Contact Ashtin Walter"
         >
           Get in Touch
