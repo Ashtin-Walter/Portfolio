@@ -8,6 +8,7 @@ import ScrollToTopButton from "./components/ScrollToTopButton"; // Import the ne
 const LazyAbout = lazy(() => import("./sections/About"));
 const LazyTimeline = lazy(() => import("./sections/Timeline"));
 const LazyProjects = lazy(() => import("./sections/Projects"));
+const LazyArcade = lazy(() => import("./sections/Arcade")); // Add Arcade import
 const LazySkills = lazy(() => import("./sections/Skills"));
 const LazyResearch = lazy(() => import("./sections/Research"));
 const LazyTestimonials = lazy(() => import("./sections/Testimonials"));
@@ -42,6 +43,7 @@ export default function App() {
         <LazyAbout />
         <LazyTimeline />
         <LazyProjects />
+        <LazyArcade /> {/* Add Arcade section here */}
         <LazySkills />
         <LazyResearch />
         <Blog />

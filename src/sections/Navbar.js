@@ -46,7 +46,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
         </button>
 
         <nav className={`${isOpen ? 'flex' : 'hidden'} md:flex w-full md:w-auto md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-200 dark:md:border-gray-700 flex-col md:flex-row items-center text-base`}>
-          {["projects", "skills", "learning-research", "testimonials"].map((section) => (
+          {["projects", "arcade", "skills", "learning-research", "testimonials"].map((section) => (
             <a
               key={section}
               href={`#${section}`}

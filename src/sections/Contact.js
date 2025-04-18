@@ -5,14 +5,6 @@ export default function Contact() {
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState({ show: false, type: "", message: "" });
 
-  function encode(data) {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
-      .join("&");
-  }
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -30,11 +22,20 @@ export default function Contact() {
 
     setIsLoading(true);
     try {
-      await fetch("/", {
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? 'https://walterhouse.co.za/api/contact'
+        : '/api/contact';
+
+      const response = await fetch(apiUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact", ...formData }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
+      
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       setStatus({
         show: true,
         type: "success",
@@ -45,7 +46,7 @@ export default function Contact() {
       setStatus({
         show: true,
         type: "error",
-        message: "Something went wrong. Please try again.",
+        message: "Failed to send message. Please try again.",
       });
     }
     setIsLoading(false);
@@ -57,8 +58,6 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Form Section */}
           <form
-            netlify
-            name="contact"
             onSubmit={handleSubmit}
             className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700"
           >
@@ -139,10 +138,10 @@ export default function Contact() {
                 <div>
                   <h3 className="text-gray-900 dark:text-white text-lg font-semibold mb-2">Email</h3>
                   <a
-                    href="mailto:ashtinjw.dev@gmail.com"
+                    href="mailto:ashtin@walterhouse.co.za"
                     className="text-indigo-500 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300"
                   >
-                    ashtinjw.dev@gmail.com
+                    ashtin@walterhouse.co.za
                   </a>
                 </div>
                 <div>

@@ -2,7 +2,7 @@ import { BookOpenIcon, PlayCircleIcon, LightBulbIcon, XMarkIcon } from "@heroico
 import React, { useState } from "react";
 
 const books = [
-  { title: "Think faster, talk smarter : how to speak successfully when you're put on the spot", author: "Matt Abrahams", progress: 10 },
+  { title: "The Hitchhiker's Guide to the Galaxy", author: "Douglas Adams ", progress: 10 },
 ];
 
 // Add array of completed books

@@ -29,7 +29,7 @@ export default function Landing() {
               Skills & Technologies
             </a>
             <div className="flex items-center space-x-4">
-              <a href="https://github.com/AshtinJW-Dev" target="_blank" rel="noreferrer" aria-label="GitHub Profile" className="text-gray-600 dark:text-gray-400 hover:scale-110 hover:text-green-600 dark:hover:text-green-400 transition-all duration-300">
+              <a href="https://github.com/Ashtin-Walter" target="_blank" rel="noreferrer" aria-label="GitHub Profile" className="text-gray-600 dark:text-gray-400 hover:scale-110 hover:text-green-600 dark:hover:text-green-400 transition-all duration-300">
                 <i className="fa-brands fa-github text-2xl"></i>
               </a>
               <a href="https://www.linkedin.com/in/ashtin-walter-b60709250/" target="_blank" rel="noreferrer" aria-label="LinkedIn Profile" className="text-gray-600 dark:text-gray-400 hover:scale-110 hover:text-green-600 dark:hover:text-green-400 transition-all duration-300">

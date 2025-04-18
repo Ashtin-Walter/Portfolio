@@ -26,7 +26,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 1.  Clone the repository:
     ```bash
-    git clone https://github.com/AshtinJW-Dev/Portfolio-2.0.git
+    git clone https://github.com/Ashtin-Walter/Portfolio-2.0.git
     cd Portfolio-2.0
     ```
 2.  Install dependencies:

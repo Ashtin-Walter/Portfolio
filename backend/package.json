@@ -1,0 +1,16 @@
+{
+  "name": "portfolio-backend",
+  "version": "1.0.0",
+  "private": true,
+  "main": "server/server.js",
+  "dependencies": {
+    "aws-sdk": "^2.1692.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
+  }
+}

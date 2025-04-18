@@ -1,11 +1,11 @@
 import { BeakerIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import React, { useState, useCallback, useMemo, memo } from "react";
-import { websites, projects, games } from "../data";
+import { websites, projects } from "../data";
 
 export default function Projects() {
   const [filter, setFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const allProjects = useMemo(() => [...websites, ...projects, ...games], []);
+  const allProjects = useMemo(() => [...websites, ...projects], []);
 
   const filteredProjects = useMemo(() => {
     let result = filter === "all" 
@@ -58,7 +58,7 @@ export default function Projects() {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {["all", "freelance", "personal", "game"].map((category) => (
+            {["all", "freelance", "personal"].map((category) => (
               <button
                 key={category}
                 onClick={() => setFilter(category)}
@@ -136,8 +136,6 @@ const ProjectCard = memo(function ProjectCard({ project }) {
       onMouseLeave={() => setIsHovering(false)}
       onMouseMove={handleMouseMove}
     >
-      {/* Consider adding project.image here with loading="lazy" if applicable */}
-      {/* Example: <img src={project.image} alt={project.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-10 transition-opacity duration-300" /> */}
       <div className="relative h-96 w-full overflow-hidden rounded-lg border-2 border-gray-300 dark:border-gray-800 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 transition-all duration-300 group-hover:border-green-400">
         <div 
           className="absolute inset-0 z-0 transition-all duration-200 ease-out"
@@ -187,4 +185,4 @@ const ProjectCard = memo(function ProjectCard({ project }) {
       </div>
     </div>
   );
-}); // Close memo wrapper
+});
