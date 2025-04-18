@@ -1,5 +1,5 @@
 import { PowerIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import React, { useState,  useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { games } from "../data";
 
 export default function Arcade() {
@@ -31,6 +31,15 @@ export default function Arcade() {
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-600 dark:text-gray-400">
             A collection of fun and interactive games I've developed. Take a break and play around!
           </p>
+          <div className="mt-6">
+            <a
+              href="/arcade"
+              className="inline-flex items-center px-6 py-3 text-base font-medium rounded-md text-white bg-purple-500 hover:bg-purple-600 dark:bg-purple-600 dark:hover:bg-purple-700 transition-colors"
+            >
+              View All Games
+              <PowerIcon className="ml-2 -mr-1 h-5 w-5" aria-hidden="true" />
+            </a>
+          </div>
         </div>
 
         {/* Search */}
@@ -81,7 +90,9 @@ export default function Arcade() {
                           href={game.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-4 py-2 text-sm bg-purple-500 dark:bg-purple-400 text-white dark:text-gray-900 rounded hover:bg-purple-600 dark:hover:bg-purple-500 transition-colors"
+                          className="px-4 py-2 text-sm bg-purple-500 dark:bg-purple-400 text-white dark:text-gray-900 rounded cursor-pointer
+                                     hover:bg-purple-600 dark:hover:bg-purple-500 active:bg-purple-700 dark:active:bg-purple-600 
+                                     transition-all duration-300 hover:scale-105"
                         >
                           Play Now
                         </a>

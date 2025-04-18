@@ -5,6 +5,7 @@ import { websites, projects } from "../data";
 export default function Projects() {
   const [filter, setFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [displayCount, setDisplayCount] = useState(3);
   const allProjects = useMemo(() => [...websites, ...projects], []);
 
   const filteredProjects = useMemo(() => {
@@ -26,6 +27,20 @@ export default function Projects() {
     
     return result;
   }, [allProjects, filter, searchQuery]);
+
+  const displayedProjects = useMemo(() => {
+    return filteredProjects.slice(0, displayCount);
+  }, [filteredProjects, displayCount]);
+
+  const showMoreProjects = () => {
+    setDisplayCount(filteredProjects.length);
+  };
+
+  const showLessProjects = () => {
+    setDisplayCount(3);
+    // Scroll back to the projects section
+    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section id="projects" className="body-font py-10">
@@ -61,7 +76,10 @@ export default function Projects() {
             {["all", "freelance", "personal"].map((category) => (
               <button
                 key={category}
-                onClick={() => setFilter(category)}
+                onClick={() => {
+                  setFilter(category);
+                  setDisplayCount(3); // Reset display count when changing filters
+                }}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors
                   ${filter === category 
                     ? 'bg-green-500 dark:bg-green-400 text-white dark:text-gray-900' 
@@ -75,16 +93,43 @@ export default function Projects() {
 
         {/* Projects Grid */}
         {filteredProjects.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
+          <>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {displayedProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+            
+            {/* Show More/Less Buttons */}
+            {filteredProjects.length > 3 && (
+              <div className="mt-12">
+                {displayCount < filteredProjects.length ? (
+                  <button
+                    onClick={showMoreProjects}
+                    className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 transition-colors shadow-md"
+                  >
+                    Show More Projects ({filteredProjects.length - displayCount} more)
+                  </button>
+                ) : (
+                  <button
+                    onClick={showLessProjects}
+                    className="px-6 py-3 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors shadow-md"
+                  >
+                    Show Less
+                  </button>
+                )}
+              </div>
+            )}
+          </>
         ) : (
           <div className="text-center py-10">
             <p className="text-xl text-gray-600 dark:text-gray-400">No projects found matching your criteria</p>
             <button 
-              onClick={() => {setFilter("all"); setSearchQuery("");}}
+              onClick={() => {
+                setFilter("all"); 
+                setSearchQuery("");
+                setDisplayCount(3); // Reset display count when clearing filters
+              }}
               className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 transition-colors"
             >
               Clear Filters

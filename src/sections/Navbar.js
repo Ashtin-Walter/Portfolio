@@ -1,9 +1,12 @@
 import { ArrowRightIcon, SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Navbar({ isDarkMode, setIsDarkMode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,17 +24,31 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
       });
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    if (location.pathname === '/') {
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, [location.pathname]);
+
+  const handleNavigation = (sectionId) => {
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: sectionId } });
+    } else {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <header className="bg-white dark:bg-gray-800 md:sticky top-0 z-50 transition-colors duration-300 shadow-sm dark:shadow-none">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <p className="title-font font-medium text-gray-900 dark:text-white mb-4 md:mb-0">
-          <a href="#about" className="ml-3 text-xl hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300" aria-label="About Ashtin Walter">
+          <button 
+            onClick={() => handleNavigation("about")} 
+            className="ml-3 text-xl hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
+            aria-label="About Ashtin Walter"
+          >
             Ashtin Walter
-          </a>
+          </button>
         </p>
         
         {/* Mobile menu button */}
@@ -47,17 +64,17 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
 
         <nav className={`${isOpen ? 'flex' : 'hidden'} md:flex w-full md:w-auto md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-200 dark:md:border-gray-700 flex-col md:flex-row items-center text-base`}>
           {["projects", "arcade", "skills", "learning-research", "testimonials"].map((section) => (
-            <a
+            <button
               key={section}
-              href={`#${section}`}
+              onClick={() => handleNavigation(section)}
               className={`mr-5 py-2 md:py-0 transition-colors duration-300 ${
                 activeSection === section ? 'text-green-600 dark:text-white font-medium' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
               }`}
               aria-label={`View ${section.charAt(0).toUpperCase() + section.slice(1)}`}
-              aria-current={activeSection === section ? "page" : undefined} // Add aria-current
+              aria-current={activeSection === section ? "page" : undefined}
             >
               {section.charAt(0).toUpperCase() + section.slice(1).replace('-', ' ')}
-            </a>
+            </button>
           ))}
         </nav>
 
@@ -74,14 +91,14 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
           )}
         </button>
 
-        <a
-          href="#contact"
+        <button
+          onClick={() => handleNavigation("contact")}
           className="inline-flex items-center bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-transparent py-2 px-4 focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-600 rounded text-gray-800 dark:text-white transition-colors duration-300 mt-4 md:mt-0"
           aria-label="Contact Ashtin Walter"
         >
           Get in Touch
           <ArrowRightIcon className="w-4 h-4 ml-1" />
-        </a>
+        </button>
       </div>
     </header>
   );

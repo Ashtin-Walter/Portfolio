@@ -4,11 +4,19 @@ const AWS = require('aws-sdk');
 require('dotenv').config();
 
 const app = express();
+
+// Increase payload size limits
+app.use(express.json({limit: '1mb'}));
+app.use(express.urlencoded({limit: '1mb', extended: true}));
+
+// Configure CORS with proper headers
 app.use(cors({
-  origin: 'https://walterhouse.co.za', 
-  optionsSuccessStatus: 200
+  origin: 'https://walterhouse.co.za',
+  optionsSuccessStatus: 200,
+  methods: ['POST'],
+  allowedHeaders: ['Content-Type'],
+  maxAge: 86400 // 24 hours in seconds
 }));
-app.use(express.json());
 
 // Configure AWS
 AWS.config.update({
@@ -51,21 +59,19 @@ app.post('/api/contact', async (req, res) => {
 
 const PORT = process.env.PORT || 0;
 const server = app.listen(PORT, () => {
-  const address = server.address();
-  console.log(`Server started successfully`);
-  console.log(`Port assigned by system: ${address.port}`);
-  if (process.env.NODE_ENV === 'production') {
-    console.log(`Server is running in production mode on port ${address.port}`);
+  console.log('Server started successfully');
+  console.log(`Environment: ${process.env.NODE_ENV}`);
+  
+  // Only try to log port details in development
+  if (process.env.NODE_ENV !== 'production') {
+    const address = server.address();
+    console.log(`Development server running at: http://localhost:${address.port}`);
   } else {
-    console.log(`Server is running at: http://localhost:${address.port}`);
+    console.log('Production server running');
   }
 });
 
-// Add error handling
+// Simplified error handling
 server.on('error', (error) => {
-  if (error.code === 'EADDRINUSE') {
-    console.error(`Port ${PORT} is already in use`);
-  } else {
-    console.error('Server error:', error);
-  }
+  console.error('Server error:', error.message);
 });
