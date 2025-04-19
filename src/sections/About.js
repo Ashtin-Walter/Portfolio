@@ -136,7 +136,7 @@ export default function About() {
                                     <div className="flex flex-col items-center space-y-2">
                                         <div className="w-16 h-16 relative rounded-full overflow-hidden border-2 border-gray-300 dark:border-gray-600">
                                             <img
-                                                src="/images/uopeople-logo.jpg"
+                                                src="/images/uopeople-logo.webp"
                                                 alt="University of the People Logo" 
                                                 fill
                                                 className="object-cover"

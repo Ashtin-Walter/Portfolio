@@ -11,7 +11,7 @@ const Ring = memo(function Ring({ altText = "Walter House Logo" }) {
         <i aria-hidden="true"></i>
         <div className="image">
           <img 
-            src="images/ash-pic.png" 
+            src="images/ash-pic.webp" 
             className="img-fluid rounded-full" 
             alt={altText}
             loading="lazy"
