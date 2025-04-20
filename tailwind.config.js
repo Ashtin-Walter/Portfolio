@@ -13,7 +13,7 @@ module.exports = {
         fadeInUp: 'fadeInUp 0.7s ease-out',
         fadeInLeft: 'fadeInLeft 0.7s ease-out',
         fadeInRight: 'fadeInRight 0.7s ease-out',
-        scaleIn: 'scaleIn 0.7s ease-out',
+        scaleIn: 'scaleIn 0.4s ease-out',
         float: 'float 3s ease-in-out infinite',
         glitch: 'glitch 1s infinite',
         scanline: 'scanline 8s linear infinite',
@@ -68,6 +68,27 @@ module.exports = {
           '50%': { opacity: '1' },
           '100%': { opacity: '0' },
         },
+        pixelPulse: {
+          '0%': { opacity: '0.3', transform: 'scale(1)' },
+          '50%': { opacity: '1', transform: 'scale(1.05)' },
+          '100%': { opacity: '0.3', transform: 'scale(1)' },
+        },
+        moveDiagonal: {
+          '0%': { transform: 'translate(-30px, -30px)' },
+          '25%': { transform: 'translate(calc(100% - 30px), -30px)' },
+          '50%': { transform: 'translate(calc(100% - 30px), calc(100% - 30px))' },
+          '75%': { transform: 'translate(-30px, calc(100% - 30px))' },
+          '100%': { transform: 'translate(-30px, -30px)' },
+        },
+        moveCircle: {
+          '0%': { transform: 'translateX(-50%) translateY(-50%) rotate(0deg) translate(80px) rotate(0deg)' },
+          '100%': { transform: 'translateX(-50%) translateY(-50%) rotate(360deg) translate(80px) rotate(-360deg)' },
+        },
+        movePaddle: {
+          '0%': { transform: 'translateX(-50%) translateY(calc(100% - 20px))' },
+          '50%': { transform: 'translateX(calc(100% - 50px)) translateY(calc(100% - 20px))' },
+          '100%': { transform: 'translateX(-50%) translateY(calc(100% - 20px))' },
+        },
       },
       perspective: {
         'none': 'none',
@@ -78,6 +99,12 @@ module.exports = {
       },
       rotate: {
         'y-15': 'rotateY(-15deg)',
+      },
+      gridTemplateColumns: {
+        '20': 'repeat(20, minmax(0, 1fr))',
+      },
+      gridTemplateRows: {
+        '20': 'repeat(20, minmax(0, 1fr))',
       },
     },
   },

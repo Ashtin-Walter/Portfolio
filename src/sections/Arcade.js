@@ -1,23 +1,39 @@
 import { PowerIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import React, { useState, useMemo } from "react";
 import { games } from "../data";
+import GameCard from "../components/GameCard";
 
 export default function Arcade() {
   const [searchQuery, setSearchQuery] = useState("");
-  
+  const [categoryFilter, setCategoryFilter] = useState('all');
+
   const filteredGames = useMemo(() => {
-    if (!searchQuery.trim()) return games;
-    
-    const query = searchQuery.toLowerCase();
-    return games.filter(game => 
-      game.title.toLowerCase().includes(query) || 
-      game.description.toLowerCase().includes(query) ||
-      (game.skills && Array.isArray(game.skills) && 
-        game.skills.some(skill => 
-          typeof skill === 'string' && skill.toLowerCase().includes(query)
-        ))
-    );
-  }, [searchQuery]);
+    let result = games;
+    const q = searchQuery.trim().toLowerCase();
+    if (q) {
+      result = result.filter(game => 
+        game.title.toLowerCase().includes(q) ||
+        game.description.toLowerCase().includes(q) ||
+        (game.skills || []).some(skill => 
+          typeof skill === 'string' && skill.toLowerCase().includes(q)
+        )
+      );
+    }
+    if (categoryFilter !== 'all') {
+      result = result.filter(game => game.category === categoryFilter);
+    }
+    return result;
+  }, [searchQuery, categoryFilter]);
+
+  // Get the counts of games by category
+  const categoryCounts = useMemo(() => {
+    const counts = {};
+    games.forEach(game => {
+      const category = game.category || "other";
+      counts[category] = (counts[category] || 0) + 1;
+    });
+    return counts;
+  }, []);
 
   return (
     <section id="arcade" className="body-font py-10">
@@ -31,12 +47,45 @@ export default function Arcade() {
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-600 dark:text-gray-400">
             A collection of fun and interactive games I've developed. Take a break and play around!
           </p>
-          <div className="mt-6">
+          
+          {/* Stats row */}
+          <div className="flex flex-wrap justify-center gap-6 mt-6 mb-4">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-purple-500 dark:text-purple-400">{games.length}</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">Total Games</div>
+            </div>
+            
+            {Object.entries(categoryCounts).map(([category, count]) => (
+              <div key={category} className="text-center">
+                <div className="text-2xl font-bold text-purple-500 dark:text-purple-400">{count}</div>
+                <div className="text-sm text-gray-500 dark:text-gray-400">{category.charAt(0).toUpperCase() + category.slice(1)}</div>
+              </div>
+            ))}
+          </div>
+          
+          {/* Category Filters */}
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
+            {['all', ...Object.keys(categoryCounts)].map(cat => (
+              <button
+                key={cat}
+                onClick={() => setCategoryFilter(cat)}
+                className={`px-4 py-1 rounded-full text-sm font-medium transition-colors ${
+                  categoryFilter === cat
+                    ? 'bg-purple-600 text-white'
+                    : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                }`}
+              >
+                {cat === 'all' ? 'All' : cat.charAt(0).toUpperCase() + cat.slice(1)}
+              </button>
+            ))}
+          </div>
+          
+          <div className="mt-4">
             <a
-              href="/arcade"
-              className="inline-flex items-center px-6 py-3 text-base font-medium rounded-md text-white bg-purple-500 hover:bg-purple-600 dark:bg-purple-600 dark:hover:bg-purple-700 transition-colors"
+              href="https://arcade.walterhouse.co.za"
+              className="inline-flex items-center px-6 py-3 text-base font-medium rounded-md text-white bg-purple-500 hover:bg-purple-600 dark:bg-purple-600 dark:hover:bg-purple-700 transition-colors shadow-md hover:shadow-lg"
             >
-              View All Games
+              Enter The Arcade
               <PowerIcon className="ml-2 -mr-1 h-5 w-5" aria-hidden="true" />
             </a>
           </div>
@@ -62,55 +111,7 @@ export default function Arcade() {
         {filteredGames.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredGames.map((game) => (
-              <div 
-                key={game.id}
-                className="relative group block"
-              >
-                <div className="relative h-96 w-full overflow-hidden rounded-lg border-2 border-gray-300 dark:border-gray-800 bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-gray-900 transition-all duration-300 group-hover:border-purple-400">
-                  <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 bg-black/40 dark:bg-black/50 backdrop-blur-sm">
-                    <span className="px-3 py-1 text-xs font-medium bg-purple-500 dark:bg-purple-400 text-white dark:text-gray-900 rounded-full mb-4">
-                      {game.subtitle}
-                    </span>
-                    <h2 className="text-xl font-bold text-white mb-2">{game.title}</h2>
-                    <p className="text-sm text-gray-200 dark:text-gray-300 text-center mb-4">{game.description}</p>
-                    
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      {game.skills.map((skill) => (
-                        <span key={skill} className="px-2 py-1 text-xs bg-gray-200 dark:bg-gray-800 text-purple-700 dark:text-purple-400 rounded">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    {/* Game Links */}
-                    <div className="flex gap-4 mt-4">
-                      {game.demo && (
-                        <a
-                          href={game.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-4 py-2 text-sm bg-purple-500 dark:bg-purple-400 text-white dark:text-gray-900 rounded cursor-pointer
-                                     hover:bg-purple-600 dark:hover:bg-purple-500 active:bg-purple-700 dark:active:bg-purple-600 
-                                     transition-all duration-300 hover:scale-105"
-                        >
-                          Play Now
-                        </a>
-                      )}
-                      {game.github && (
-                        <a
-                          href={game.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-4 py-2 text-sm bg-gray-300 dark:bg-gray-800 text-gray-800 dark:text-purple-400 rounded hover:bg-gray-400 dark:hover:bg-gray-700 transition-colors"
-                        >
-                          GitHub
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <GameCard key={game.id} game={game} />
             ))}
           </div>
         ) : (

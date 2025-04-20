@@ -75,3 +75,18 @@
 .ring:hover .image {
   transform: scale(1.1);
 }
+
+/* Retro pixel hover effect for GameCard */
+.pixel-card .pixel-bg {
+  background-color: #222;
+  background-image: 
+    linear-gradient(#333 1px, transparent 1px),
+    linear-gradient(90deg, #333 1px, transparent 1px);
+  background-size: 8px 8px;
+  image-rendering: crisp-edges;
+  transition: background-size 0.2s ease-in-out, filter 0.2s ease-in-out;
+}
+.pixel-card:hover .pixel-bg {
+  background-size: 4px 4px;
+  filter: brightness(1.2);
+}

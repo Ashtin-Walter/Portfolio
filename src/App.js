@@ -15,7 +15,7 @@ const LazyResearch = lazy(() => import("./sections/Research"));
 const LazyTestimonials = lazy(() => import("./sections/Testimonials"));
 const LazyContact = lazy(() => import("./sections/Contact"));
 const Blog = lazy(() => import("./sections/Blog"));
-const ArcadePage = lazy(() => import("./pages/ArcadePage"));
+
 
 function AppContent() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -65,7 +65,7 @@ function AppContent() {
               <LazyContact />
             </>
           } />
-          <Route path="/arcade" element={<ArcadePage />} />
+          
         </Routes>
       </Suspense>
       <Footer />
