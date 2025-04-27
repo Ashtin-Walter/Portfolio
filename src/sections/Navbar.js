@@ -63,17 +63,25 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
         </button>
 
         <nav className={`${isOpen ? 'flex' : 'hidden'} md:flex w-full md:w-auto md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-200 dark:md:border-gray-700 flex-col md:flex-row items-center text-base`}>
-          {["projects", "arcade", "skills", "learning-research", "testimonials"].map((section) => (
+          {[
+            { id: "freelance-projects", label: "Freelance Work" },
+            { id: "personal-projects", label: "Personal Projects" },
+            { id: "arcade", label: "Arcade" },
+            { id: "toolshed", label: "Toolshed" },
+            { id: "skills", label: "Skills" },
+            { id: "learning-research", label: "Learning Research" },
+            { id: "testimonials", label: "Testimonials" }
+          ].map((section) => (
             <button
-              key={section}
-              onClick={() => handleNavigation(section)}
+              key={section.id}
+              onClick={() => handleNavigation(section.id)}
               className={`mr-5 py-2 md:py-0 transition-colors duration-300 ${
-                activeSection === section ? 'text-green-600 dark:text-white font-medium' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                activeSection === section.id ? 'text-green-600 dark:text-white font-medium' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
               }`}
-              aria-label={`View ${section.charAt(0).toUpperCase() + section.slice(1)}`}
-              aria-current={activeSection === section ? "page" : undefined}
+              aria-label={`View ${section.label}`}
+              aria-current={activeSection === section.id ? "page" : undefined}
             >
-              {section.charAt(0).toUpperCase() + section.slice(1).replace('-', ' ')}
+              {section.label}
             </button>
           ))}
         </nav>

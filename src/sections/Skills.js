@@ -6,9 +6,11 @@ import {
   CursorArrowRaysIcon,
   PaintBrushIcon,
   WrenchScrewdriverIcon,
+  ClipboardDocumentListIcon,
+  SwatchIcon,
 } from "@heroicons/react/24/solid";
 import React, { memo } from "react"; // Import memo
-import { frontend, backend, digitalMarketing, graphicDesign, devOps } from "../data";
+import { frontend, backend, productTools, designTools, devOps } from "../data";
 
 export default function Skills() {
   return (
@@ -33,7 +35,6 @@ export default function Skills() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
           {/* Frontend Development */}
           <SkillCard
-            // Adjusted icon color for better contrast in light mode
             icon={<ComputerDesktopIcon className="w-6 h-6 text-blue-500 dark:text-blue-400" />}
             title="Frontend Dev"
             skills={frontend}
@@ -41,7 +42,6 @@ export default function Skills() {
 
           {/* Backend Development */}
           <SkillCard
-            // Adjusted icon color
             icon={<ServerStackIcon className="w-6 h-6 text-purple-500 dark:text-purple-400" />}
             title="Backend Dev"
             skills={backend}
@@ -49,26 +49,23 @@ export default function Skills() {
 
           {/* DevOps */}
           <SkillCard
-            // Adjusted icon color
             icon={<WrenchScrewdriverIcon className="w-6 h-6 text-green-500 dark:text-green-400" />}
             title="DevOps"
             skills={devOps}
           />
 
-          {/* Digital Marketing */}
+          {/* Product Tools */}
           <SkillCard
-            // Adjusted icon color
-            icon={<CursorArrowRaysIcon className="w-6 h-6 text-yellow-500 dark:text-yellow-400" />}
-            title="Digital Marketing"
-            skills={digitalMarketing}
+            icon={<ClipboardDocumentListIcon className="w-6 h-6 text-yellow-500 dark:text-yellow-400" />}
+            title="Product Tools"
+            skills={productTools}
           />
 
-          {/* Graphic Design */}
+          {/* Design Tools */}
           <SkillCard
-            // Adjusted icon color
-            icon={<PaintBrushIcon className="w-6 h-6 text-pink-500 dark:text-pink-400" />}
-            title="Graphic Design"
-            skills={graphicDesign}
+            icon={<SwatchIcon className="w-6 h-6 text-pink-500 dark:text-pink-400" />}
+            title="Design Tools"
+            skills={designTools}
           />
         </div>
 

@@ -1,17 +1,14 @@
 import { BeakerIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import React, { useState, useCallback, useMemo, memo } from "react";
-import { websites, projects } from "../data";
+import { websites } from "../data";
 
-export default function Projects() {
-  const [filter, setFilter] = useState("all");
+export default function FreelanceProjects() {
   const [searchQuery, setSearchQuery] = useState("");
   const [displayCount, setDisplayCount] = useState(3);
-  const allProjects = useMemo(() => [...websites, ...projects], []);
+  const freelanceProjects = websites; // Using only the websites array which contains freelance projects
 
   const filteredProjects = useMemo(() => {
-    let result = filter === "all" 
-      ? allProjects 
-      : allProjects.filter(project => project.category === filter);
+    let result = freelanceProjects;
     
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
@@ -26,7 +23,7 @@ export default function Projects() {
     }
     
     return result;
-  }, [allProjects, filter, searchQuery]);
+  }, [freelanceProjects, searchQuery]);
 
   const displayedProjects = useMemo(() => {
     return filteredProjects.slice(0, displayCount);
@@ -39,25 +36,24 @@ export default function Projects() {
   const showLessProjects = () => {
     setDisplayCount(3);
     // Scroll back to the projects section
-    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('freelance-projects').scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="projects" className="body-font py-10">
+    <section id="freelance-projects" className="body-font py-10">
       <div className="container px-5 mx-auto text-center lg:px-40">
         {/* Section Header */}
         <div className="flex flex-col w-full mb-10">
           <div className="animate-bounce-slow"><BeakerIcon className="mx-auto w-10 mb-4 text-green-500 dark:text-green-400" /></div>
           <h1 className="sm:text-4xl text-3xl font-medium title-font text-gray-900 dark:text-white">
-            My Projects
+            Freelance Work
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-600 dark:text-gray-400">
-            I've worked on a diverse range of projects, both for clients and personal growth. 
-            Here are some of the highlights.
+            Professional projects I've completed for clients, showcasing my skills in web development and digital marketing.
           </p>
         </div>
 
-        {/* Search and Filter */}
+        {/* Search */}
         <div className="mb-8">
           <div className="relative max-w-md mx-auto mb-6">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -66,28 +62,10 @@ export default function Projects() {
             <input
               type="text"
               className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md leading-5 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-150 ease-in-out"
-              placeholder="Search projects..."
+              placeholder="Search freelance projects..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {["all", "freelance", "personal"].map((category) => (
-              <button
-                key={category}
-                onClick={() => {
-                  setFilter(category);
-                  setDisplayCount(3); // Reset display count when changing filters
-                }}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors
-                  ${filter === category 
-                    ? 'bg-green-500 dark:bg-green-400 text-white dark:text-gray-900' 
-                    : 'bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-400 hover:bg-gray-300 dark:hover:bg-green-400/20 hover:text-gray-900 dark:hover:text-green-300'}`}
-              >
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </button>
-            ))}
           </div>
         </div>
 
@@ -126,13 +104,12 @@ export default function Projects() {
             <p className="text-xl text-gray-600 dark:text-gray-400">No projects found matching your criteria</p>
             <button 
               onClick={() => {
-                setFilter("all"); 
                 setSearchQuery("");
-                setDisplayCount(3); // Reset display count when clearing filters
+                setDisplayCount(3);
               }}
               className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 transition-colors"
             >
-              Clear Filters
+              Clear Search
             </button>
           </div>
         )}

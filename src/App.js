@@ -8,12 +8,14 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 // Lazy load sections
 const LazyAbout = lazy(() => import("./sections/About"));
 const LazyTimeline = lazy(() => import("./sections/Timeline"));
-const LazyProjects = lazy(() => import("./sections/Projects"));
+const LazyFreelanceProjects = lazy(() => import("./sections/Projects"));
+const LazyPersonalProjects = lazy(() => import("./sections/PersonalProjects"));
 const LazyArcade = lazy(() => import("./sections/Arcade")); 
 const LazySkills = lazy(() => import("./sections/Skills"));
 const LazyResearch = lazy(() => import("./sections/Research"));
 const LazyTestimonials = lazy(() => import("./sections/Testimonials"));
 const LazyContact = lazy(() => import("./sections/Contact"));
+const LazyToolshed = lazy(() => import("./sections/Toolshed"));
 const Blog = lazy(() => import("./sections/Blog"));
 
 
@@ -56,12 +58,24 @@ function AppContent() {
               <Landing />
               <LazyAbout />
               <LazyTimeline />
-              <LazyProjects />
+              <LazyFreelanceProjects />
+              <LazyToolshed />
               <LazyArcade />
+              <LazyPersonalProjects />
               <LazySkills />
               <LazyResearch />
               <Blog />
               <LazyTestimonials />
+              <LazyContact />
+            </>
+          } />
+          
+          {/* Add the dedicated Personal Projects page route */}
+          <Route path="/personal-projects" element={
+            <>
+              <div className="py-20">
+                <LazyPersonalProjects />
+              </div>
               <LazyContact />
             </>
           } />

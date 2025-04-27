@@ -76,17 +76,127 @@
   transform: scale(1.1);
 }
 
-/* Retro pixel hover effect for GameCard */
+/* Enhanced Retro pixel hover effect for GameCard */
 .pixel-card .pixel-bg {
   background-color: #222;
   background-image: 
     linear-gradient(#333 1px, transparent 1px),
     linear-gradient(90deg, #333 1px, transparent 1px);
   background-size: 8px 8px;
-  image-rendering: crisp-edges;
-  transition: background-size 0.2s ease-in-out, filter 0.2s ease-in-out;
+  image-rendering: pixelated;
+  transition: all 0.3s ease-in-out;
+  position: relative;
 }
+
 .pixel-card:hover .pixel-bg {
   background-size: 4px 4px;
   filter: brightness(1.2);
+}
+
+.pixel-bg.pixel-active {
+  animation: pixel-pulse 2s infinite;
+  background-image: 
+    linear-gradient(rgba(128, 0, 255, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(128, 0, 255, 0.3) 1px, transparent 1px);
+}
+
+.pixel-overlay {
+  pointer-events: none;
+}
+
+.pixel {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 1px;
+  opacity: 0.7;
+  filter: blur(1px);
+}
+
+.pixel-1 {
+  background: #ff00ff;
+  top: 20%;
+  left: 15%;
+  animation: float-pixel 3s ease-in-out infinite;
+}
+
+.pixel-2 {
+  background: #00ffff;
+  top: 60%;
+  left: 75%;
+  animation: float-pixel 2.5s ease-in-out infinite 0.5s;
+}
+
+.pixel-3 {
+  background: #ffff00;
+  top: 25%;
+  left: 80%;
+  animation: float-pixel 4s ease-in-out infinite 1s;
+}
+
+.pixel-4 {
+  background: #00ff00;
+  top: 75%;
+  left: 25%;
+  animation: float-pixel 3.5s ease-in-out infinite 1.5s;
+}
+
+.pixel-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 8px 2px rgba(141, 90, 253, 0.6);
+  animation: scan 3s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.text-glow {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 
+              0 0 12px rgba(128, 0, 255, 0.6);
+  animation: text-flicker 2s linear infinite;
+}
+
+@keyframes pixel-pulse {
+  0%, 100% { 
+    filter: hue-rotate(0deg) brightness(1.2);
+  }
+  50% { 
+    filter: hue-rotate(45deg) brightness(1.5);
+  }
+}
+
+@keyframes float-pixel {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) rotate(0deg); 
+    opacity: 0.7;
+  }
+  25% { 
+    transform: translateY(-15px) translateX(5px) rotate(5deg); 
+    opacity: 0.9;
+  }
+  50% { 
+    transform: translateY(-5px) translateX(10px) rotate(0deg); 
+    opacity: 0.7;
+  }
+  75% { 
+    transform: translateY(-10px) translateX(-5px) rotate(-5deg); 
+    opacity: 0.8;
+  }
+}
+
+@keyframes scan {
+  0% { top: -5%; }
+  100% { top: 105%; }
+}
+
+@keyframes text-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+  96% { opacity: 0.9; }
+  97% { opacity: 1; }
 }

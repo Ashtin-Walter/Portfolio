@@ -129,8 +129,7 @@ export const backend = [
   "Express.js",
   "PHP",
   "REST APIs",
-  "GraphQL",
-  "MongoDB",
+  "Python",
   "MySQL",
   "MariaDB",
   "Firebase",
@@ -147,22 +146,20 @@ export const devOps = [
   "Raspberry Pi Server Setup",
 ];
 
-export const digitalMarketing = [
-  "SEO Optimization",
-  "Google Ads (PPC)",
+export const productTools = [
+  "Jira",
+  "Confluence",
+  "Google-Suite",
+  "Slack",
   "Data Analysis & Reporting",
-  "Copywriting & Content Marketing",
-  "Social Media Marketing",
-  "Email Marketing",
+  "Technical Documentation"
 ];
 
-export const graphicDesign = [
+export const designTools = [
   "Figma",
-  "Canva",
-  "Adobe Photoshop",
-  "Photo Editing",
-  "Video Editing",
-  "Content Creation",
+  "UI/UX Design",
+  "Wireframing",
+  "Design Systems"
 ];
 
 export const testimonials = [
@@ -200,7 +197,7 @@ export const games = [
     category: "puzzle",
     description: "Tenfinity is an addictive grid-based puzzle game inspired by the classic 1010!",
     skills: ["React", "Canvas API", "JavaScript"],
-    demo: "https://arcade.walterhouse.co.za/tenfinity/",
+    demo: "https://arcade.walterhouse.co.za/games/original/tenfinity/",
     github: "https://github.com/Ashtin-Walter/tenfinity",
     image: "images/projects/tenfinity.png",
     difficulty: 2,
@@ -216,7 +213,7 @@ export const games = [
     category: "action",
     description: "Flappy Ostrich is my take on the classic Flappy Bird game, built with Nextjs and TailwindCSS.",
     skills: ["Next.js", "TailwindCSS", "JavaScript"],
-    demo: "https://arcade.walterhouse.co.za/flappy-ostrich/",
+    demo: "https://arcade.walterhouse.co.za/games/original/flappy-ostrich/",
     github: "https://github.com/Ashtin-Walter/flappy-ostrich",
     image: "images/projects/flappy-ostrich.png",
     difficulty: 3,
@@ -227,12 +224,12 @@ export const games = [
   },
   {
     id: 3,
-    title: "Memory Match",
+    title: "Meme Match",
     subtitle: "New Release",
     category: "puzzle",
     description: "A classic memory card matching game with a twist - match cards while racing against the clock!",
     skills: ["React", "Framer Motion", "JavaScript"],
-    demo: "https://arcade.walterhouse.co.za/memory-match/",
+    demo: "https://arcade.walterhouse.co.za/games/original/memory-match/",
     github: "https://github.com/Ashtin-Walter/memory-match",
     image: "images/projects/memory-match.png",
     difficulty: 1,
@@ -240,5 +237,44 @@ export const games = [
     completion: "60%",
     playCount: 14,
     releaseDate: "2024-03-10"
+  }
+];
+
+export const tools = [
+  {
+    id: 1,
+    title: "URL Shortener",
+    subtitle: "Web Utility",
+    category: "utility",
+    description: "A simple and efficient URL shortening service that creates compact, shareable links from long URLs.",
+    skills: ["React", "Node.js", "MongoDB"],
+    demo: "https://tools.walterhouse.co.za/url-shortener",
+    github: "https://github.com/Ashtin-Walter/url-shortener",
+    image: "images/tools/url-shortener.png",
+    releaseDate: "2024-05-15"
+  },
+  {
+    id: 2,
+    title: "QR Code Generator",
+    subtitle: "Code Generator",
+    category: "generator",
+    description: "Create customizable QR codes for websites, contact information, Wi-Fi credentials, and more.",
+    skills: ["JavaScript", "Canvas API", "HTML5"],
+    demo: "https://tools.walterhouse.co.za/qr-generator",
+    github: "https://github.com/Ashtin-Walter/qr-generator",
+    image: "images/tools/qr-code.png",
+    releaseDate: "2024-06-01"
+  },
+  {
+    id: 3,
+    title: "Image Converter",
+    subtitle: "Media Tool",
+    category: "converter",
+    description: "A powerful utility for converting images between various formats including WebP, JPEG, PNG and SVG with optimization options.",
+    skills: ["Node.js", "Express", "Sharp", "File Handling"],
+    demo: "https://tools.walterhouse.co.za/image-converter",
+    github: "https://github.com/Ashtin-Walter/image-converter",
+    image: "images/tools/image-converter.png",
+    releaseDate: "2024-06-15"
   }
 ];
