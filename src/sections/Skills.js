@@ -3,8 +3,6 @@ import {
   CpuChipIcon,
   ComputerDesktopIcon,
   ServerStackIcon,
-  CursorArrowRaysIcon,
-  PaintBrushIcon,
   WrenchScrewdriverIcon,
   ClipboardDocumentListIcon,
   SwatchIcon,
