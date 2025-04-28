@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { UserIcon, AcademicCapIcon, CodeBracketIcon, CogIcon } from "@heroicons/react/24/solid";
+import { 
+    UserIcon, 
+     
+    CodeBracketIcon, 
+    CogIcon, 
+    DocumentTextIcon,
+    CommandLineIcon 
+} from "@heroicons/react/24/solid";
 import AnimatedNumber from "../components/AnimatedNumber";
 import useInView from "../hooks/useInView";
 
@@ -23,6 +30,28 @@ export default function About() {
         { value: "500K+", label: "Lines Of Code Written" },
         { value: "1000+", label: "Cups Of Coffee" },
         { value: "?", label: "Time Spent Coding For You" }
+    ];
+
+    // Certification data with unique icons
+    const certifications = [
+        {
+            title: "Responsive Web Design",
+            url: "https://www.freecodecamp.org/certification/AshtinJW/responsive-web-design",
+            icon: DocumentTextIcon,
+            color: "text-blue-500"
+        },
+        {
+            title: "JavaScript Algorithms and Data Structures",
+            url: "https://www.freecodecamp.org/certification/AshtinJW/javascript-algorithms-and-data-structures",
+            icon: CodeBracketIcon,
+            color: "text-green-500"
+        },
+        {
+            title: "Front End Development Libraries",
+            url: "https://www.freecodecamp.org/certification/AshtinJW/front-end-development-libraries",
+            icon: CommandLineIcon,
+            color: "text-purple-500"
+        }
     ];
 
     return (
@@ -105,19 +134,21 @@ export default function About() {
                         {activeTab === "certs" && (
                             <div className="p-4 bg-white dark:bg-gray-800 rounded-lg md:p-8">
                                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Certifications</h2>
-                                <div className="flex flex-wrap justify-center gap-8 text-center text-gray-700 dark:text-gray-300">
-                                    <a href="https://www.freecodecamp.org/certification/AshtinJW/responsive-web-design" className="hover:text-blue-600 dark:hover:text-blue-400">
-                                        <div className="flex flex-col items-center space-y-2">
-                                            <AcademicCapIcon className="w-12 h-12 text-blue-500" />
-                                            <p className="text-lg font-semibold">Responsive Web Design</p>
-                                        </div>
-                                    </a>
-                                    <a href="https://www.freecodecamp.org/certification/AshtinJW/javascript-algorithms-and-data-structures" className="hover:text-green-600 dark:hover:text-green-400">
-                                        <div className="flex flex-col items-center space-y-2">
-                                            <CodeBracketIcon className="w-12 h-12 text-green-500" />
-                                            <p className="text-lg font-semibold">JavaScript Algorithms and Data Structures</p>
-                                        </div>
-                                    </a>
+                                <div className="flex flex-wrap justify-center gap-8 text-center text-gray-700 dark:text-gray-300 mt-6">
+                                    {certifications.map((cert, index) => (
+                                        <a 
+                                            key={index}
+                                            href={cert.url} 
+                                            className="hover:text-blue-600 dark:hover:text-blue-400 transform transition-transform hover:scale-105"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <div className="flex flex-col items-center space-y-2">
+                                                <cert.icon className={`w-12 h-12 ${cert.color}`} />
+                                                <p className="text-lg font-semibold">{cert.title}</p>
+                                            </div>
+                                        </a>
+                                    ))}
                                     <div className="flex flex-col items-center space-y-2">
                                         <CogIcon className="w-12 h-12 text-gray-500 dark:text-gray-400 animate-spin" />
                                         <p className="text-lg font-semibold">More in progress</p>
@@ -132,15 +163,13 @@ export default function About() {
                                 className="p-4 bg-white dark:bg-gray-800 rounded-lg md:p-8"
                             >
                                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Education</h2>
-                                <div className="flex flex-wrap justify-center gap-8 text-center text-gray-700 dark:text-gray-300">
+                                <div className="flex flex-wrap justify-center gap-8 text-center text-gray-700 dark:text-gray-300 mt-6">
                                     <div className="flex flex-col items-center space-y-2">
                                         <div className="w-16 h-16 relative rounded-full overflow-hidden border-2 border-gray-300 dark:border-gray-600">
                                             <img
                                                 src="/images/uopeople-logo.webp"
                                                 alt="University of the People Logo" 
-                                                fill
-                                                className="object-cover"
-                                                priority
+                                                className="object-cover w-full h-full"
                                             />
                                         </div>
                                         <p className="text-lg font-semibold">Bachelor of Computer Science</p>

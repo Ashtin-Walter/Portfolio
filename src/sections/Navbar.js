@@ -65,9 +65,9 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
         <nav className={`${isOpen ? 'flex' : 'hidden'} md:flex w-full md:w-auto md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-200 dark:md:border-gray-700 flex-col md:flex-row items-center text-base`}>
           {[
             { id: "freelance-projects", label: "Freelance Work" },
-            { id: "personal-projects", label: "Personal Projects" },
-            { id: "arcade", label: "Arcade" },
             { id: "toolshed", label: "Toolshed" },
+            { id: "arcade", label: "Arcade" },
+            { id: "personal-projects", label: "Personal Projects" },
             { id: "skills", label: "Skills" },
             { id: "learning-research", label: "Learning Research" },
             { id: "testimonials", label: "Testimonials" }
