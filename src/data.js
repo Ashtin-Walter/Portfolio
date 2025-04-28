@@ -1,6 +1,16 @@
 export const websites = [
   {
     id: 1,
+    title: "Kwantu Guesthouses",
+    subtitle: "Web Development & UI Design",
+    category: "freelance",
+    description: "Developed a modern, responsive website for Kwantu Guesthouses, a luxury accommodation provider in Cape Town, enhancing their online presence and booking experience.",
+    skills: ["React", "Bootstrap", "JavaScript", "Responsive Design"],
+    demo: "https://kwantuguesthouses.capetown/",
+    image: "images/projects/kwantu-guesthouses.png",
+  },
+  {
+    id: 2,
     title: "Gras-Groen",
     subtitle: "Web Development & Branding",
     category: "freelance",
@@ -11,7 +21,7 @@ export const websites = [
     image: "images/projects/gras-groen.png",
   },
   {
-    id: 2,
+    id: 3,
     title: "Crater Bush Villa",
     subtitle: "Web Development & Graphic Design",
     category: "freelance",
@@ -22,7 +32,7 @@ export const websites = [
     image: "images/projects/crater collage.png",
   },
   {
-    id: 3,
+    id: 4,
     title: "Annie's Social Healthcare",
     subtitle: "Web Development & UX/UI Design",
     category: "freelance",
@@ -33,7 +43,7 @@ export const websites = [
     image: "images/projects/annies-social-healthcare.png",
   },
   {
-    id: 4,
+    id: 5,
     title: "Johnny Green Thumb",
     subtitle: "Web Development & Branding",
     category: "freelance",
@@ -44,7 +54,7 @@ export const websites = [
     image: "images/projects/johnny-green-thumb.png",
   },
   {
-    id: 5,
+    id: 6,
     title: "Ngena Ekasi Tours",
     subtitle: "Web Development, Digital Marketing, Graphic Design",
     category: "freelance",
@@ -55,7 +65,7 @@ export const websites = [
     image: "images/projects/ngena collage.png",
   },
   {
-    id: 6,
+    id: 7,
     title: "The Kushader Co.",
     subtitle: "Web Development, Digital Marketing, Graphic Design",
     category: "freelance",
@@ -65,7 +75,7 @@ export const websites = [
     image: "images/projects/kushader collage.png",
   },
   {
-    id: 7,
+    id: 8,
     title: "Rekindle Candle Co.",
     subtitle: "Wix Website Optimization & Updates",
     category: "freelance",
@@ -75,7 +85,7 @@ export const websites = [
     image: "images/projects/rekindle-candle.png", // Ensure this image exists
   },
   {
-    id: 8,
+    id: 9,
     title: "Robyn Chloe Photography",
     subtitle: "Web Development & Portfolio Showcase",
     category: "freelance",
