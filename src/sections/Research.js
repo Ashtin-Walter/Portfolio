@@ -14,7 +14,7 @@ const completedBooks = [
 ];
 
 const courses = [
-  { name: "Front End Development Libraries", platform: "Free Code Camp", link: "https://www.freecodecamp.org/learn/front-end-development-libraries" },
+  { name: "Data Visualization", platform: "Free Code Camp", link: "https://www.freecodecamp.org/learn/data-visualization/" },
 ];
 
 const newTech = {

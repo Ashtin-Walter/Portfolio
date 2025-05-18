@@ -36,6 +36,7 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
     } else {
       document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsOpen(false);
   };
 
   return (

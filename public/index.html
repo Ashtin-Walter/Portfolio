@@ -9,6 +9,11 @@
       name="description"
       content="Portfolio website for Ashtin Walter, a Full-Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Explore projects, skills, and experience."
     />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Ashtin Walter | Portfolio" />
+    <meta property="og:description" content="Portfolio of Ashtin Walter: Full-Stack Developer specializing in React, Next.js, Node.js, and modern web technologies." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%PUBLIC_URL%/logo512.png" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -58,6 +63,8 @@
   gtag('config', 'G-Q5ZQHKXJJ7');
 </script>
   <body>
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only p-2 bg-green-500 text-white">Skip to main content</a>
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
       <input type="text" name="name" />
       <input type="email" name="email" />
