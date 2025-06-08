@@ -1,10 +1,10 @@
 import React, { useState, memo } from 'react';
 import {
-  AcademicCapIcon,
-  BuildingStorefrontIcon,
   DocumentTextIcon,
   CodeBracketIcon,
-  ComputerDesktopIcon
+  UserGroupIcon,
+  BriefcaseIcon,
+  ShoppingCartIcon
 } from '@heroicons/react/24/solid';
 
 const ExperienceTimeline = memo(() => {
@@ -20,7 +20,7 @@ const ExperienceTimeline = memo(() => {
       type: 'Full-time',
       description: 'Provided English tutoring and language support to students of varying ages and proficiency levels.',
       skills: ['Teaching', 'Communication', 'Problem Solving', 'Mentorship'],
-      icon: AcademicCapIcon
+      icon: UserGroupIcon
     },
     {
       company: 'The Fro Co.',
@@ -31,7 +31,7 @@ const ExperienceTimeline = memo(() => {
       type: 'Full-time',
       description: 'Owned and operated a successful vegan ice cream business serving markets across Durban.',
       skills: ['Small Business', 'Graphic Design', 'Digital Marketing', 'Communication', 'Sales'],
-      icon: BuildingStorefrontIcon
+      icon: ShoppingCartIcon
     },
     {
       company: 'Rev',
@@ -51,20 +51,20 @@ const ExperienceTimeline = memo(() => {
       year: '2023',
       location: 'Cape Town, South Africa',
       type: 'Full-time',
-      description: 'Helping businesses grow through web development, UI/UX, and digital marketing solutions. Building responsive, SEO-optimized websites using React, Next.js, and Tailwind CSS.',
-      skills: ['Web Development', 'Digital Marketing', 'Graphic Design', 'Communication', 'Sales'],
+      description: 'Built and maintained web applications for clients using modern technologies. Focused on creating responsive, accessible, and performant solutions.',
+      skills: ['React.js', 'Node.js', 'TypeScript', 'Tailwind CSS', 'Git'],
       icon: CodeBracketIcon
     },
     {
       company: 'Artlogic',
-      position: 'Product Support Engineer',
+      position: 'Full Stack Developer',
       period: 'Apr 2025 - Present',
       year: '2025',
       location: 'Cape Town, South Africa',
       type: 'Full-time',
-      description: 'Working with SRE and platform engineering teams to provide technical support for Artlogic, a leading art industry SaaS platform. Handling web application support, incident management, and contributing to product improvement.',
-      skills: ['Python', 'SQL', 'REST APIs', 'Problem Solving', 'Technical Support', 'Incident Management'],
-      icon: ComputerDesktopIcon
+      description: 'Working with art galleries worldwide to provide digital solutions for art sales and gallery management.',
+      skills: ['JavaScript', 'Python', 'SQL', 'AWS', 'API Development'],
+      icon: BriefcaseIcon
     }
   ].sort((a, b) => parseInt(a.year) - parseInt(b.year));
 
@@ -86,6 +86,7 @@ const ExperienceTimeline = memo(() => {
                 <div className="w-16 h-16 rounded-full bg-green-500 dark:bg-green-600 flex items-center justify-center text-white hover:bg-green-600 dark:hover:bg-green-700 transition-colors">
                   <exp.icon className="h-8 w-8" />
                 </div>
+                
                 <p className="text-sm font-medium text-center mt-2 text-gray-700 dark:text-gray-300">{exp.year}</p>
                 
                 {hoveredIndex === index && (
