@@ -1,3 +1,291 @@
+import {
+  AcademicCapIcon,
+  BuildingStorefrontIcon,
+  DocumentTextIcon,
+  CodeBracketIcon,
+  ComputerDesktopIcon,
+  SquaresPlusIcon,
+  CommandLineIcon
+} from '@heroicons/react/24/solid';
+
+// Social links and contact information
+export const contactInfo = {
+  email: "ashtin@walterhouse.co.za",
+  phone: "+27 78 051 6010",
+  location: "Cape Town, Western Cape, ZA",
+  github: "https://github.com/Ashtin-Walter",
+  linkedin: "https://www.linkedin.com/in/ashtin-walter-b60709250/",
+  social: {
+    github: {
+      url: "https://github.com/Ashtin-Walter",
+      label: "GitHub Profile"
+    },
+    linkedin: {
+      url: "https://www.linkedin.com/in/ashtin-walter-b60709250/",
+      label: "LinkedIn Profile"
+    }
+  }
+};
+
+// Navigation structure
+export const navigation = {
+  main: [
+    { id: "freelance-projects", label: "Freelance Work" },
+    { id: "toolshed", label: "Toolshed" },
+    { id: "arcade", label: "Arcade" },
+    { id: "personal-projects", label: "Personal Projects" },
+    { id: "skills", label: "Skills" },
+    { id: "learning-research", label: "Learning Research" },
+    { id: "testimonials", label: "Testimonials" }
+  ],
+  footer: [
+    { href: "#about", label: "About" },
+    { href: "#projects", label: "Projects" },
+    { href: "#skills", label: "Skills" },
+    { href: "#contact", label: "Contact" }
+  ]
+};
+
+// Personal Information
+export const personalInfo = {
+  name: "Ashtin Walter",
+  title: "Full Stack Developer",
+  headline: "I love to build amazing things.",
+  intro: "I am passionate about creating websites, apps, and developing skills in music, gardening, business, and coding. Collaboration is key to achieving extraordinary results. Let's build something incredible together.",
+  stats: [
+    { value: "2020", label: "Coding Since" },
+    { value: "10+", label: "Repositories Published" },
+    { value: "111%", label: "Effort Given" },
+    { value: "500K+", label: "Lines Of Code Written" },
+    { value: "1000+", label: "Cups Of Coffee" },
+    { value: "?", label: "Time Spent Coding For You" }
+  ],
+  education: {
+    degree: "Bachelor of Computer Science",
+    school: "University of the People",
+    status: "In Progress - 2025",
+    courses: ["Python", "Java", "Data Structures", "Algorithms", "Operating Systems"]
+  }
+};
+
+// Skills and technologies categorized
+export const frontend = [
+  "React",
+  "Next.js",
+  "JavaScript",
+  "TypeScript",
+  "HTML5",
+  "CSS3",
+  "Tailwind CSS",
+  "Bootstrap",
+  "ShadCN",
+  "Redux",
+];
+
+export const backend = [
+  "Node.js",
+  "Express.js",
+  "PHP",
+  "REST APIs",
+  "Python",
+  "MySQL",
+  "MariaDB",
+  "Firebase",
+  "AWS",
+];
+
+export const devOps = [
+  "Docker",
+  "CI/CD Pipelines",
+  "Nginx",
+  "PM2",
+  "Linux Server Management",
+  "Git & GitHub",
+  "Raspberry Pi Server Setup",
+];
+
+export const productTools = [
+  "Jira",
+  "Confluence",
+  "Google-Suite",
+  "Slack",
+  "Data Analysis & Reporting",
+  "Technical Documentation"
+];
+
+export const designTools = [
+  "Figma",
+  "UI/UX Design",
+  "Wireframing",
+  "Design Systems"
+];
+
+// Experience timeline
+export const experience = [
+ {
+      company: 'MPC Recruitment',
+      position: 'Language Consultant',
+      period: 'Feb 2017 - Sep 2017',
+      year: '2017',
+      location: 'Durban, South Africa',
+      type: 'Full-time',
+      description: 'Provided English tutoring and language support to students of varying ages and proficiency levels.',
+      skills: ['Teaching', 'Communication', 'Problem Solving', 'Mentorship'],
+      icon: AcademicCapIcon
+    },
+    {
+      company: 'The Fro Co.',
+      position: 'Owner',
+      period: 'Jan 2018 - Aug 2021',
+      year: '2018',
+      location: 'Durban, South Africa',
+      type: 'Full-time',
+      description: 'Owned and operated a successful vegan ice cream business serving markets across Durban.',
+      skills: ['Small Business', 'Graphic Design', 'Digital Marketing', 'Communication', 'Sales'],
+      icon: BuildingStorefrontIcon
+    },
+    {
+      company: 'Rev',
+      position: 'Transcriptionist',
+      period: '2021 - 2023',
+      year: '2021',
+      location: 'Cape Town, South Africa',
+      type: 'Freelance',
+      description: 'Specialized in accurate transcription of audio and video content, ensuring high-quality deliverables for various clients.',
+      skills: ['Digital Dictation', 'Transcribing', 'Typing', 'Active Listening'],
+      icon: DocumentTextIcon
+    },
+    {
+      company: 'Freelance',
+      position: 'Web Developer & Consultant',
+      period: 'Mar 2023 - Apr 2025',
+      year: '2023',
+      location: 'Cape Town, South Africa',
+      type: 'Full-time',
+      description: 'Helping businesses grow through web development, UI/UX, and digital marketing solutions. Building responsive, SEO-optimized websites using React, Next.js, and Tailwind CSS.',
+      skills: ['Web Development', 'Digital Marketing', 'Graphic Design', 'Communication', 'Sales'],
+      icon: CodeBracketIcon
+    },
+    {
+      company: 'Artlogic',
+      position: 'Product Support Engineer',
+      period: 'Apr 2025 - Present',
+      year: '2025',
+      location: 'Cape Town, South Africa',
+      type: 'Full-time',
+      description: 'Working with SRE and platform engineering teams to provide technical support for Artlogic, a leading art industry SaaS platform. Handling web application support, incident management, and contributing to product improvement.',
+      skills: ['Python', 'SQL', 'REST APIs', 'Problem Solving', 'Technical Support', 'Incident Management'],
+      icon: ComputerDesktopIcon
+    }
+];
+
+// Interests and hobbies
+export const interests = [
+  {
+    category: "Technology",
+    items: ["AI & Machine Learning", "Web Development", "Open Source", "Blockchain"]
+  },
+  {
+    category: "Learning",
+    items: ["Computer Science", "Mathematics", "Language Learning", "Teaching"]
+  },
+  {
+    category: "Creative",
+    items: ["UI/UX Design", "Digital Art", "Photography", "Writing"]
+  },
+  {
+    category: "Lifestyle",
+    items: ["Fitness", "Meditation", "Cooking", "Travel"]
+  }
+];
+
+// Certifications
+export const certifications = [
+  {
+    title: "Responsive Web Design",
+    url: "https://www.freecodecamp.org/certification/AshtinJW/responsive-web-design",
+    icon: SquaresPlusIcon,
+    color: "text-indigo-400"
+  },
+  {
+    title: "JavaScript Algorithms and Data Structures",
+    url: "https://www.freecodecamp.org/certification/AshtinJW/javascript-algorithms-and-data-structures",
+    icon: CommandLineIcon,
+    color: "text-yellow-400"
+  },
+  {
+    title: "Front End Development Libraries",
+    url: "https://www.freecodecamp.org/certification/AshtinJW/front-end-development-libraries",
+    icon: CodeBracketIcon,
+    color: "text-blue-400"
+  }
+];
+
+// Tools and setup
+export const developmentSetup = [
+  {
+    category: "Development Environment",
+    icon: "CommandLine",
+    items: [
+      { name: "VS Code", description: "Primary code editor with custom extensions" },
+      { name: "Windows Terminal", description: "PowerShell with Oh My Posh" },
+      { name: "WSL2", description: "Linux development environment" },
+      { name: "Docker Desktop", description: "Container management" }
+    ]
+  },
+  {
+    category: "Version Control & Deployment",
+    icon: "Cloud",
+    items: [
+      { name: "Git", description: "Version control with GitHub" },
+      { name: "GitHub Actions", description: "CI/CD automation" },
+      { name: "Vercel", description: "Frontend deployment" },
+      { name: "Digital Ocean", description: "Cloud hosting" }
+    ]
+  },
+  {
+    category: "Frontend Stack",
+    icon: "Code",
+    items: [
+      { name: "React.js", description: "UI development" },
+      { name: "Next.js", description: "React framework" },
+      { name: "TypeScript", description: "Type-safe JavaScript" },
+      { name: "Tailwind CSS", description: "Utility-first styling" }
+    ]
+  },
+  {
+    category: "Backend & DevOps",
+    icon: "Server",
+    items: [
+      { name: "Node.js", description: "Runtime environment" },
+      { name: "Express", description: "Backend framework" },
+      { name: "MongoDB", description: "NoSQL database" },
+      { name: "PostgreSQL", description: "Relational database" }
+    ]
+  },
+  {
+    category: "Design Tools",
+    icon: "ColorSwatch",
+    items: [
+      { name: "Figma", description: "UI/UX design" },
+      { name: "Adobe Creative Cloud", description: "Graphics & video" },
+      { name: "Canva", description: "Quick graphics" },
+      { name: "Excalidraw", description: "Diagrams & wireframes" }
+    ]
+  },
+  {
+    category: "Productivity",
+    icon: "Lightning",
+    items: [
+      { name: "Confluence", description: "Notes & documentation" },
+      { name: "Jira", description: "Project management" },
+      { name: "Slack", description: "Team communication" },
+      { name: "Google Suite", description: "Business Tools" }
+    ]
+  }
+];
+
+// Keep existing data exports
 export const websites = [
   {
     id: 1,
@@ -93,7 +381,7 @@ export const websites = [
     skills: ["Wix", "SEO", "Portfolio Design"], // Adjust skills if different tech was used
     demo: "https://robynchloephotography.co.za/",
     image: "images/projects/robyn-chloe.png", // Ensure this image exists
-  },
+  }
 ];
 
 export const projects = [
@@ -118,85 +406,46 @@ export const projects = [
     demo: "https://github.com/AshtinJW-Dev/Muncharoo",
     github: "https://github.com/Ashtin-Walter/muncharoo",
     image: "images/projects/muncharoo-collage.png",
-  },
+  }
 ];
 
-export const frontend = [
-  "React",
-  "Next.js",
-  "JavaScript",
-  "TypeScript",
-  "HTML5",
-  "CSS3",
-  "Tailwind CSS",
-  "Bootstrap",
-  "ShadCN",
-  "Redux",
-];
-
-export const backend = [
-  "Node.js",
-  "Express.js",
-  "PHP",
-  "REST APIs",
-  "Python",
-  "MySQL",
-  "MariaDB",
-  "Firebase",
-  "AWS",
-];
-
-export const devOps = [
-  "Docker",
-  "CI/CD Pipelines",
-  "Nginx",
-  "PM2",
-  "Linux Server Management",
-  "Git & GitHub",
-  "Raspberry Pi Server Setup",
-];
-
-export const productTools = [
-  "Jira",
-  "Confluence",
-  "Google-Suite",
-  "Slack",
-  "Data Analysis & Reporting",
-  "Technical Documentation"
-];
-
-export const designTools = [
-  "Figma",
-  "UI/UX Design",
-  "Wireframing",
-  "Design Systems"
-];
-
-export const testimonials = [
+export const tools = [
   {
     id: 1,
-    quote: '"Working with you has been a game-changer for our business. Your expertise and dedication are unmatched."',
-    name: "Thandisizwe Dhano",
-    company: "Ngena Ekasi Tours",
+    title: "URL Shortener",
+    subtitle: "Web Utility",
+    category: "utility",
+    description: "A simple and efficient URL shortening service that creates compact, shareable links from long URLs.",
+    skills: ["React", "Node.js", "MongoDB"],
+    demo: "https://tools.walterhouse.co.za/url-shortener",
+    github: "https://github.com/Ashtin-Walter/url-shortener",
+    image: "images/tools/url-shortener.png",
+    releaseDate: "2024-05-15"
   },
   {
     id: 2,
-    quote: '"Your work exceeded our expectations. We are thrilled with the results and look forward to future projects together."',
-    name: "Lana Rodel",
-    company: "Crater Bush Villa",
+    title: "QR Code Generator",
+    subtitle: "Code Generator",
+    category: "generator",
+    description: "Create customizable QR codes for websites, contact information, Wi-Fi credentials, and more.",
+    skills: ["JavaScript", "Canvas API", "HTML5"],
+    demo: "https://tools.walterhouse.co.za/qr-generator",
+    github: "https://github.com/Ashtin-Walter/qr-generator",
+    image: "images/tools/qr-code.png",
+    releaseDate: "2024-06-01"
   },
   {
     id: 3,
-    quote: '"Your creativity and professionalism have significantly boosted our brand. Thank you for your outstanding work."',
-    name: "Jasmine Budd",
-    company: "The Kushader Co.",
-  },
-  {
-    id: 4,
-    quote: '"The website you built for us is fantastic! It perfectly captures our brand and has been a hit with our customers."',
-    name: "Johnny",
-    company: "Johnny Green Thumb",
-  },
+    title: "Image Converter",
+    subtitle: "Media Tool",
+    category: "converter",
+    description: "A powerful utility for converting images between various formats including WebP, JPEG, PNG and SVG with optimization options.",
+    skills: ["Node.js", "Express", "Sharp", "File Handling"],
+    demo: "https://tools.walterhouse.co.za/image-converter",
+    github: "https://github.com/Ashtin-Walter/image-converter",
+    image: "images/tools/image-converter.png",
+    releaseDate: "2024-06-15"
+  }
 ];
 
 export const games = [
@@ -250,41 +499,29 @@ export const games = [
   }
 ];
 
-export const tools = [
+export const testimonials = [
   {
     id: 1,
-    title: "URL Shortener",
-    subtitle: "Web Utility",
-    category: "utility",
-    description: "A simple and efficient URL shortening service that creates compact, shareable links from long URLs.",
-    skills: ["React", "Node.js", "MongoDB"],
-    demo: "https://tools.walterhouse.co.za/url-shortener",
-    github: "https://github.com/Ashtin-Walter/url-shortener",
-    image: "images/tools/url-shortener.png",
-    releaseDate: "2024-05-15"
+    quote: '"Working with you has been a game-changer for our business. Your expertise and dedication are unmatched."',
+    name: "Thandisizwe Dhano",
+    company: "Ngena Ekasi Tours",
   },
   {
     id: 2,
-    title: "QR Code Generator",
-    subtitle: "Code Generator",
-    category: "generator",
-    description: "Create customizable QR codes for websites, contact information, Wi-Fi credentials, and more.",
-    skills: ["JavaScript", "Canvas API", "HTML5"],
-    demo: "https://tools.walterhouse.co.za/qr-generator",
-    github: "https://github.com/Ashtin-Walter/qr-generator",
-    image: "images/tools/qr-code.png",
-    releaseDate: "2024-06-01"
+    quote: '"Your work exceeded our expectations. We are thrilled with the results and look forward to future projects together."',
+    name: "Lana Rodel",
+    company: "Crater Bush Villa",
   },
   {
     id: 3,
-    title: "Image Converter",
-    subtitle: "Media Tool",
-    category: "converter",
-    description: "A powerful utility for converting images between various formats including WebP, JPEG, PNG and SVG with optimization options.",
-    skills: ["Node.js", "Express", "Sharp", "File Handling"],
-    demo: "https://tools.walterhouse.co.za/image-converter",
-    github: "https://github.com/Ashtin-Walter/image-converter",
-    image: "images/tools/image-converter.png",
-    releaseDate: "2024-06-15"
-  }
+    quote: '"Your creativity and professionalism have significantly boosted our brand. Thank you for your outstanding work."',
+    name: "Jasmine Budd",
+    company: "The Kushader Co.",
+  },
+  {
+    id: 4,
+    quote: '"The website you built for us is fantastic! It perfectly captures our brand and has been a hit with our customers."',
+    name: "Johnny",
+    company: "Johnny Green Thumb",
+  },
 ];
