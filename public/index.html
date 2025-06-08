@@ -41,11 +41,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-  </head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5ZQHKXJJ7"></script>
+  </head>  <!-- Theme initialization -->
   <script>
-    // --- Add this script ---
     (function() {
       const theme = localStorage.getItem('theme');
       if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -54,14 +51,63 @@
         document.documentElement.classList.remove('dark');
       }
     })();
-    // --- End script ---
+  </script>
 
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5ZQHKXJJ7"></script>
+  
+  <!-- Web Vitals & Performance Monitoring -->
+  <script>
+    // Measure First Input Delay
+    const firstInputObserver = () => {
+      new PerformanceObserver((entryList) => {
+        const entries = entryList.getEntries();
+        entries.forEach((entry) => {
+          const fid = Math.round(entry.processingStart - entry.startTime);
+          window.gtag('event', 'FID', {
+            event_category: 'Web Vitals',
+            value: fid,
+            non_interaction: true,
+          });
+        });
+      }).observe({ type: 'first-input', buffered: true });
+    };
 
-  gtag('config', 'G-Q5ZQHKXJJ7');
-</script>
+    // Measure Largest Contentful Paint
+    const lcpObserver = () => {
+      new PerformanceObserver((entryList) => {
+        const entries = entryList.getEntries();
+        entries.forEach((entry) => {
+          if (entry.startTime < performance.timing.loadEventEnd) {
+            window.gtag('event', 'LCP', {
+              event_category: 'Web Vitals',
+              value: Math.round(entry.startTime),
+              non_interaction: true,
+            });
+          }
+        });
+      }).observe({ type: 'largest-contentful-paint', buffered: true });
+    };
+
+    // Initialize performance monitoring
+    if ('PerformanceObserver' in window) {
+      firstInputObserver();
+      lcpObserver();
+    }
+  </script>
+
+  <!-- Error tracking -->
+  <script>
+    window.addEventListener('error', function(event) {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'JavaScript Error', {
+          event_category: 'Error',
+          event_label: event.message,
+          non_interaction: true
+        });
+      }
+    });
+  </script>
   <body>
     <!-- Skip to main content link -->
     <a href="#main-content" class="sr-only focus:not-sr-only p-2 bg-green-500 text-white">Skip to main content</a>
