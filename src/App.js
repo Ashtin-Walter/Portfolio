@@ -7,21 +7,19 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 import ErrorBoundary from "./ErrorBoundary";
 import LoadingSpinner from "./components/LoadingSpinner";
 import NotFound from "./components/NotFound";
-import { initGA, pageview, trackWebVitals } from './utils/analytics.ts';
-import { withAnalytics } from './components/withAnalytics';
 
-// Lazy load sections and wrap with analytics HOC
-const LazyLanding = withAnalytics(lazy(() => import("./sections/Landing")));
-const LazyAbout = withAnalytics(lazy(() => import("./sections/About")));
-const LazyFreelanceProjects = withAnalytics(lazy(() => import("./sections/Projects")));
-const LazyPersonalProjects = withAnalytics(lazy(() => import("./sections/PersonalProjects")));
-const LazyArcade = withAnalytics(lazy(() => import("./sections/Arcade"))); 
-const LazySkills = withAnalytics(lazy(() => import("./sections/Skills")));
-const LazyResearch = withAnalytics(lazy(() => import("./sections/Research")));
-const LazyTestimonials = withAnalytics(lazy(() => import("./sections/Testimonials")));
-const LazyContact = withAnalytics(lazy(() => import("./sections/Contact")));
-const LazyToolshed = withAnalytics(lazy(() => import("./sections/Toolshed")));
-const Blog = withAnalytics(lazy(() => import("./sections/Blog")));
+// Lazy load sections
+const LazyLanding = lazy(() => import("./sections/Landing"));
+const LazyAbout = lazy(() => import("./sections/About"));
+const LazyFreelanceProjects = lazy(() => import("./sections/Projects"));
+const LazyPersonalProjects = lazy(() => import("./sections/PersonalProjects"));
+const LazyArcade = lazy(() => import("./sections/Arcade")); 
+const LazySkills = lazy(() => import("./sections/Skills"));
+const LazyResearch = lazy(() => import("./sections/Research"));
+const LazyTestimonials = lazy(() => import("./sections/Testimonials"));
+const LazyContact = lazy(() => import("./sections/Contact"));
+const LazyToolshed = lazy(() => import("./sections/Toolshed"));
+const Blog = lazy(() => import("./sections/Blog"));
 
 
 function AppContent() {
@@ -48,20 +46,7 @@ function AppContent() {
         document.getElementById(location.state.scrollTo)?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     }
-  }, [location]);
-
-  // Initialize Google Analytics and track page views
-  useEffect(() => {
-    initGA();
-    pageview(window.location.pathname);
-
-    // Track web vitals
-    if ('web-vitals' in window) {
-      window.webVitals.getCLS((metric) => trackWebVitals(metric));
-      window.webVitals.getFID((metric) => trackWebVitals(metric));
-      window.webVitals.getLCP((metric) => trackWebVitals(metric));
-    }
-  }, []);
+  }, [location]);  
 
   // Determine theme class based on isDarkMode state
   const themeClass = isDarkMode ? 'bg-gray-900 text-gray-400' : 'bg-gray-100 text-gray-800';

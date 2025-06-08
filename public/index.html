@@ -50,62 +50,50 @@
       } else {
         document.documentElement.classList.remove('dark');
       }
-    })();
-  </script>
+    })();  </script>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5ZQHKXJJ7"></script>
-  
-  <!-- Web Vitals & Performance Monitoring -->
   <script>
-    // Measure First Input Delay
-    const firstInputObserver = () => {
-      new PerformanceObserver((entryList) => {
-        const entries = entryList.getEntries();
-        entries.forEach((entry) => {
-          const fid = Math.round(entry.processingStart - entry.startTime);
-          window.gtag('event', 'FID', {
-            event_category: 'Web Vitals',
-            value: fid,
-            non_interaction: true,
-          });
-        });
-      }).observe({ type: 'first-input', buffered: true });
-    };
-
-    // Measure Largest Contentful Paint
-    const lcpObserver = () => {
-      new PerformanceObserver((entryList) => {
-        const entries = entryList.getEntries();
-        entries.forEach((entry) => {
-          if (entry.startTime < performance.timing.loadEventEnd) {
-            window.gtag('event', 'LCP', {
-              event_category: 'Web Vitals',
-              value: Math.round(entry.startTime),
-              non_interaction: true,
-            });
-          }
-        });
-      }).observe({ type: 'largest-contentful-paint', buffered: true });
-    };
-
-    // Initialize performance monitoring
-    if ('PerformanceObserver' in window) {
-      firstInputObserver();
-      lcpObserver();
-    }
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q5ZQHKXJJ7');
   </script>
 
-  <!-- Error tracking -->
+  <!-- Web Vitals Monitoring -->
   <script>
+    // Simplified Web Vitals monitoring
+    if ('PerformanceObserver' in window) {
+      // Monitor FID (First Input Delay)
+      new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          const fid = Math.round(entry.processingStart - entry.startTime);
+          gtag('event', 'FID', {
+            value: fid,
+            event_category: 'Web Vitals'
+          });
+        }
+      }).observe({ type: 'first-input', buffered: true });
+
+      // Monitor LCP (Largest Contentful Paint)
+      new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          gtag('event', 'LCP', {
+            value: Math.round(entry.startTime),
+            event_category: 'Web Vitals'
+          });
+        }
+      }).observe({ type: 'largest-contentful-paint', buffered: true });
+    }
+
+    // Simple error tracking
     window.addEventListener('error', function(event) {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'JavaScript Error', {
-          event_category: 'Error',
-          event_label: event.message,
-          non_interaction: true
-        });
-      }
+      gtag('event', 'Error', {
+        event_category: 'JavaScript',
+        event_label: event.message
+      });
+      console.error('Application Error:', event.message);
     });
   </script>
   <body>
