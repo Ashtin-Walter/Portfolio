@@ -41,7 +41,7 @@ export const withAnalytics = (WrappedComponent) => {
           observer.unobserve(element);
         }
       };
-    }, []);
+    }, [componentName]);
 
     // Add click tracking to the component
     const handleClick = (e) => {
