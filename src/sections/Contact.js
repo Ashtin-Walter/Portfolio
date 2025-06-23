@@ -62,7 +62,7 @@ export default function Contact() {
 
   const ContactInfo = ({ icon, title, content, href }) => (
     <div className="flex items-start space-x-4">
-      <div className="p-3 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl">
+      <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-xl">
         {icon}
       </div>
       <div>
@@ -70,7 +70,7 @@ export default function Contact() {
         {href ? (
           <a
             href={href}
-            className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors duration-200"
+            className="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors duration-200"
           >
             {content}
           </a>
@@ -186,9 +186,9 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg
+                    className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg
                       transform transition-all duration-200 hover:scale-[1.02]
-                      focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+                      focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500
                       disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
                       dark:focus:ring-offset-gray-800"
                   >
@@ -211,18 +211,18 @@ export default function Contact() {
             {/* Contact Info & Map */}
             <div className="lg:col-span-2 space-y-8">
               <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 space-y-8">
-                <ContactInfo                  icon={<MapPinIcon className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />}
+                <ContactInfo                  icon={<MapPinIcon className="w-6 h-6 text-blue-600 dark:text-blue-400" />}
                   title="Location"
                   content={contactInfo.location}
                 />
                 <ContactInfo
-                  icon={<EnvelopeIcon className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />}
+                  icon={<EnvelopeIcon className="w-6 h-6 text-green-600 dark:text-green-400" />}
                   title="Email"
                   content={contactInfo.email}
                   href={`mailto:${contactInfo.email}`}
                 />
                 <ContactInfo
-                  icon={<PhoneIcon className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />}
+                  icon={<PhoneIcon className="w-6 h-6 text-blue-600 dark:text-blue-400" />}
                   title="Phone"
                   content={contactInfo.phone}
                   href={`tel:${contactInfo.phone.replace(/\s+/g, '')}`}

@@ -13,8 +13,6 @@ export const contactInfo = {
   email: "ashtin@walterhouse.co.za",
   phone: "+27 78 051 6010",
   location: "Cape Town, Western Cape, ZA",
-  github: "https://github.com/Ashtin-Walter",
-  linkedin: "https://www.linkedin.com/in/ashtin-walter-b60709250/",
   social: {
     github: {
       url: "https://github.com/Ashtin-Walter",
@@ -30,6 +28,7 @@ export const contactInfo = {
 // Navigation structure
 export const navigation = {
   main: [
+    { id: "about", label: "About" },
     { id: "freelance-projects", label: "Freelance Work" },
     { id: "toolshed", label: "Toolshed" },
     { id: "arcade", label: "Arcade" },
@@ -69,56 +68,28 @@ export const personalInfo = {
 };
 
 // Skills and technologies categorized
-export const frontend = [
-  "React",
-  "Next.js",
-  "JavaScript",
-  "TypeScript",
-  "HTML5",
-  "CSS3",
-  "Tailwind CSS",
-  "Bootstrap",
-  "ShadCN",
-  "Redux",
-];
+export const skills = {
+  frontend: [
+    "React", "Next.js", "JavaScript", "TypeScript", "HTML5", "CSS3", 
+    "Tailwind CSS", "Bootstrap", "ShadCN", "Redux"
+  ],
+  backend: [
+    "Node.js", "Express.js", "PHP", "REST APIs", "Python", 
+    "MySQL", "MariaDB", "Firebase", "AWS"
+  ],
+  devOps: [
+    "Docker", "CI/CD Pipelines", "Nginx", "PM2", "Linux Server Management", 
+    "Git & GitHub", "Raspberry Pi Server Setup"
+  ],
+  tools: [
+    "Jira", "Confluence", "Google Suite", "Slack", "Figma", "UI/UX Design"
+  ]
+};
 
-export const backend = [
-  "Node.js",
-  "Express.js",
-  "PHP",
-  "REST APIs",
-  "Python",
-  "MySQL",
-  "MariaDB",
-  "Firebase",
-  "AWS",
-];
-
-export const devOps = [
-  "Docker",
-  "CI/CD Pipelines",
-  "Nginx",
-  "PM2",
-  "Linux Server Management",
-  "Git & GitHub",
-  "Raspberry Pi Server Setup",
-];
-
-export const productTools = [
-  "Jira",
-  "Confluence",
-  "Google-Suite",
-  "Slack",
-  "Data Analysis & Reporting",
-  "Technical Documentation"
-];
-
-export const designTools = [
-  "Figma",
-  "UI/UX Design",
-  "Wireframing",
-  "Design Systems"
-];
+// Legacy exports for backward compatibility
+export const { frontend, backend, devOps } = skills;
+export const productTools = skills.tools;
+export const designTools = ["Figma", "UI/UX Design", "Wireframing", "Design Systems"];
 
 // Experience timeline
 export const experience = [
@@ -228,9 +199,9 @@ export const developmentSetup = [
     icon: "CommandLine",
     items: [
       { name: "VS Code", description: "Primary code editor with custom extensions" },
-      { name: "Windows Terminal", description: "PowerShell with Oh My Posh" },
-      { name: "WSL2", description: "Linux development environment" },
-      { name: "Docker Desktop", description: "Container management" }
+      { name: "Windows Terminal", description: "PowerShell" },
+      { name: "Ubuntu", description: "Linux development environment" },
+      { name: "SSH", description: "Remote Development" }
     ]
   },
   {
@@ -239,8 +210,7 @@ export const developmentSetup = [
     items: [
       { name: "Git", description: "Version control with GitHub" },
       { name: "GitHub Actions", description: "CI/CD automation" },
-      { name: "Vercel", description: "Frontend deployment" },
-      { name: "Digital Ocean", description: "Cloud hosting" }
+      { name: "Cloudflare", description: "Domain Management" }
     ]
   },
   {
@@ -259,8 +229,8 @@ export const developmentSetup = [
     items: [
       { name: "Node.js", description: "Runtime environment" },
       { name: "Express", description: "Backend framework" },
-      { name: "MongoDB", description: "NoSQL database" },
-      { name: "PostgreSQL", description: "Relational database" }
+      { name: "Firebase", description: "Various Tools(DB, Auth etc.)" },
+      { name: "MariaDB", description: "Relational database" }
     ]
   },
   {
@@ -268,9 +238,9 @@ export const developmentSetup = [
     icon: "ColorSwatch",
     items: [
       { name: "Figma", description: "UI/UX design" },
-      { name: "Adobe Creative Cloud", description: "Graphics & video" },
+      
       { name: "Canva", description: "Quick graphics" },
-      { name: "Excalidraw", description: "Diagrams & wireframes" }
+     
     ]
   },
   {
@@ -305,7 +275,7 @@ export const websites = [
     description: "Designed and developed a clean, professional website for Gras-Groen, focusing on showcasing their high-quality services and improving online presence.",
     skills: ["HTML", "CSS", "Bootstrap", "Javascript"],
     demo: "https://gras-groen.co.za/",
-    // github: "https://github.com/Ashtin-Walter/gras-groen",
+
     image: "images/projects/gras-groen.png",
   },
   {
@@ -316,7 +286,7 @@ export const websites = [
     description: "A comprehensive project involving web development and graphic design to create an immersive online experience for Crater Bush Villa, a luxury accommodation provider.",
     skills: ["HTML", "CSS", "Bootstrap", "Javascript"],
     demo: "https://craterbushvilla.co.za/",
-    // github: "https://github.com/Ashtin-Walter/crater-bush-villa",
+
     image: "images/projects/crater collage.png",
   },
   {
@@ -327,7 +297,7 @@ export const websites = [
     description: "Focused on enhancing user experience and accessibility by developing a user-friendly website for Annie's Social Healthcare services.",
     skills: ["HTML", "CSS", "Bootstrap", "Javascript"],
     demo: "https://annies-healthcare.netlify.app/",
-    // github: "https://github.com/Ashtin-Walter/annies-social-healthcare",
+
     image: "images/projects/annies-social-healthcare.png",
   },
   {
@@ -338,7 +308,7 @@ export const websites = [
     description: "Built a visually appealing and easy-to-navigate website for Johnny Green Thumb, effectively showcasing their services and expertise.",
     skills: ["HTML", "CSS", "Bootstrap", "Javascript"],
     demo: "https://johnnygreenthumbza.co.za/",
-    // github: "https://github.com/Ashtin-Walter/johnny-green-thumb",
+
     image: "images/projects/johnny-green-thumb.png",
   },
   {
@@ -370,7 +340,7 @@ export const websites = [
     description: "Optimized and updated the Wix website for Rekindle Candle Co., a scent and candle studio, enhancing user experience and performance.",
     skills: ["Wix", "Support", "Website Optimization"],
     demo: "https://rekindlecandleco.co.za/",
-    image: "images/projects/rekindle-candle.png", // Ensure this image exists
+    image: "images/projects/rekindle-candle.png"
   },
   {
     id: 9,
@@ -378,9 +348,9 @@ export const websites = [
     subtitle: "Web Development & Portfolio Showcase",
     category: "freelance",
     description: "Developed a visually stunning portfolio website for Robyn Chloe Photography, a Cape Town-based photographer, showcasing her work elegantly.",
-    skills: ["Wix", "SEO", "Portfolio Design"], // Adjust skills if different tech was used
+    skills: ["Wix", "SEO", "Portfolio Design"],
     demo: "https://robynchloephotography.co.za/",
-    image: "images/projects/robyn-chloe.png", // Ensure this image exists
+    image: "images/projects/robyn-chloe.png"
   }
 ];
 

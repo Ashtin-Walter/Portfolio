@@ -23,8 +23,8 @@ export default function Landing() {
           </div>
           
           <div className="flex flex-wrap justify-center md:justify-start gap-4 animate-fadeIn animation-delay-200">
-            <a
-              href="#freelance-projects"
+            <button
+              onClick={() => document.getElementById('freelance-projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
               className="inline-flex items-center text-white bg-gradient-to-r from-green-500 to-green-600 border-0 py-3 px-8 focus:outline-none hover:from-green-600 hover:to-green-700 rounded-lg text-lg font-medium transition-all duration-300 transform hover:-translate-y-0.5 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
               aria-label="View Portfolio"
             >
@@ -32,14 +32,14 @@ export default function Landing() {
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
               </svg>
-            </a>
-            <a
-              href="#skills"
+            </button>
+            <button
+              onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
               className="inline-flex items-center text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 py-3 px-8 focus:outline-none hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg text-lg font-medium transition-all duration-300 transform hover:-translate-y-0.5 focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
               aria-label="View Skills & Technologies"
             >
               Skills & Technologies
-            </a>
+            </button>
             
             <div className="flex items-center space-x-6 mt-4 md:mt-0 animate-fadeIn animation-delay-400">              <a 
                 href={contactInfo.social.github.url} 

@@ -2,6 +2,7 @@ import { ArrowRightIcon, SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 import React, { useState, useEffect, useCallback, memo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { navigation } from "../data";
+import { throttle } from "../utils/performance";
 
 // Memoize NavLink component for better performance
 const NavLink = memo(({ section, activeSection, handleNavigation }) => (
@@ -26,32 +27,45 @@ NavLink.displayName = 'NavLink';
 
 export default function Navbar({ isDarkMode, setIsDarkMode }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useState("landing");
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Memoize scroll handler
+  // Memoize scroll handler with improved section detection
   const handleScroll = useCallback(() => {
     const scrollY = window.pageYOffset;
     setIsScrolled(scrollY > 20);
 
-    const sections = document.querySelectorAll("section[id]");
-    sections.forEach(section => {
-      const sectionHeight = section.offsetHeight;
-      const sectionTop = section.offsetTop - 80;
-      const sectionId = section.getAttribute("id");
+    // Only update active section if we're on the home page
+    if (location.pathname === '/') {
+      const sections = document.querySelectorAll("section[id]");
+      let currentSection = "landing";
+      
+      sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100; // Increased offset for better detection
+        const sectionId = section.getAttribute("id");
 
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        setActiveSection(sectionId);
-      }
-    });
-  }, []);
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          currentSection = sectionId;
+        }
+      });
+      
+      setActiveSection(currentSection);
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     if (location.pathname === '/') {
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
+      // Initial check for active section
+      handleScroll();
+      const throttledScroll = throttle(handleScroll, 100);
+      window.addEventListener("scroll", throttledScroll, { passive: true });
+      return () => window.removeEventListener("scroll", throttledScroll);
+    } else {
+      // Reset active section when not on home page
+      setActiveSection("landing");
     }
   }, [location.pathname, handleScroll]);
 
@@ -59,7 +73,10 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
     if (location.pathname !== '/') {
       navigate('/', { state: { scrollTo: sectionId } });
     } else {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
     setIsOpen(false);
   }, [location.pathname, navigate]);
@@ -73,10 +90,10 @@ export default function Navbar({ isDarkMode, setIsDarkMode }) {
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <p className="title-font font-medium text-gray-900 dark:text-white mb-4 md:mb-0">
           <button 
-            onClick={() => handleNavigation("about")} 
+            onClick={() => handleNavigation("landing")} 
             className="ml-3 text-xl hover:text-green-600 dark:hover:text-green-400 transition-all duration-300
               relative group"
-            aria-label="About Ashtin Walter"
+            aria-label="Go to top - Ashtin Walter"
           >
             Ashtin Walter
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 

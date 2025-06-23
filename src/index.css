@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance optimizations */
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  scroll-margin-top: 80px; /* Account for fixed navbar */
+}
+
+/* Improve rendering performance */
+.transform {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-bounce-slow,
+  .animate-fade-in,
+  .animate-fadeIn,
+  .animate-fadeInUp {
+    will-change: transform, opacity;
+  }
+}
+
 @keyframes bounce-slow {
   0%, 100% { transform: translateY(-5%); }
   50% { transform: translateY(0); }
@@ -80,12 +105,24 @@
   text-shadow: 0 0 10px theme('colors.indigo.500/30');
 }
 
-/* Optional: Add support for reduced motion */
+/* Accessibility: Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
   .animate-fadeIn,
-  .animate-fadeInUp {
+  .animate-fadeInUp,
+  .animate-bounce-slow,
+  .animate-fade-in {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+  
+  .transition-all,
+  .transition-colors,
+  .transition-transform {
+    transition: none;
   }
 }
