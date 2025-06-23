@@ -97,7 +97,7 @@ export default function Footer() {
             </p>
             <a
               href="#contact"
-              className="inline-block px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors duration-200"
+              className="inline-block px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-md transition-colors duration-200"
             >
               Get in Touch
             </a>

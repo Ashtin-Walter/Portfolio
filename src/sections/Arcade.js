@@ -1,5 +1,5 @@
 import { PowerIcon, MagnifyingGlassIcon, XMarkIcon, AdjustmentsHorizontalIcon } from "@heroicons/react/24/solid";
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { games } from "../data";
 import GameCard from "../components/GameCard";
 
@@ -9,13 +9,7 @@ export default function Arcade() {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
 
-  // Scroll to top when filters change
-  useEffect(() => {
-    const arcadeSection = document.getElementById('arcade');
-    if (arcadeSection) {
-      arcadeSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [categoryFilter]);
+  // Note: Removed automatic scroll to arcade section to prevent unwanted page jumps
 
   const filteredGames = useMemo(() => {
     let result = games;

@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useInView } from "react-intersection-observer";
 import { personalInfo, interests, certifications, developmentSetup, experience } from "../data";
 import {
@@ -36,7 +36,7 @@ function StatsTab({ stats, statsRef, isStatsInView }) {
       className="p-4 bg-white dark:bg-gray-800 rounded-lg md:p-8 transition-all duration-300"
     >
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-        <StarIcon className="w-6 h-6 text-yellow-400 animate-pulse" /> Statistics
+        <StarIcon className="w-6 h-6 text-green-400 animate-pulse" /> Statistics
       </h2>
       <dl className="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 dark:text-white sm:grid-cols-3 xl:grid-cols-6 sm:p-8">
         {stats.map((stat, index) => (
@@ -97,7 +97,7 @@ function EducationTab() {
   return (
     <div id="education-panel" role="tabpanel" className="p-4 bg-white dark:bg-gray-800 rounded-lg md:p-8">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2 mb-8">
-        <AcademicCapIcon className="w-6 h-6 text-indigo-400" /> Education
+        <AcademicCapIcon className="w-6 h-6 text-blue-400" /> Education
       </h2>
       <div className="flex flex-wrap justify-center gap-8 text-gray-700 dark:text-gray-300">
         <div 
@@ -105,7 +105,7 @@ function EducationTab() {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className={`w-24 h-24 relative rounded-xl overflow-hidden border-2 border-indigo-300 dark:border-indigo-600 transition-transform duration-300 ${isHovered ? 'scale-110' : ''}`}>
+          <div className={`w-24 h-24 relative rounded-xl overflow-hidden border-2 border-blue-300 dark:border-blue-600 transition-transform duration-300 ${isHovered ? 'scale-110' : ''}`}>
             <img
               src="/images/uopeople-logo.webp"
               alt="University of the People Logo" 
@@ -117,7 +117,7 @@ function EducationTab() {
             <p className="text-sm text-gray-500 dark:text-gray-400">University of the People</p>
             <p className="text-sm text-gray-500 dark:text-gray-400 italic mt-1">(In Progress - 2025)</p>
             <div className="mt-4 flex flex-wrap justify-center gap-2">              {personalInfo.education.courses.map((skill, i) => (
-                <span key={i} className="text-xs bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 px-2 py-1 rounded-full">
+                <span key={i} className="text-xs bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-2 py-1 rounded-full">
                   {skill}
                 </span>
               ))}
@@ -130,150 +130,82 @@ function EducationTab() {
 }
 
 function TimelineTab() {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 640);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const experienceWithIcons = useMemo(() => {
-    const iconMap = {
-      'MPC Recruitment': UserGroupIcon,
-      'The Fro Co.': ShoppingCartIcon,
-      'Rev': DocumentTextIcon,
-      'Freelance': CodeBracketIcon,
-      'Artlogic': BriefcaseIcon
-    };
-
-    return experience.map(exp => ({
-      ...exp,
-      icon: iconMap[exp.company] || BriefcaseIcon
-    }));
-  }, []);
-
-  // Sort experiences by year
-  const sortedExperiences = useMemo(() => 
-    [...experienceWithIcons].sort((a, b) => parseInt(a.year) - parseInt(b.year)), 
-    [experienceWithIcons]
-  );
-
-  const handleClick = (index) => {
-    setSelectedIndex(selectedIndex === index ? null : index);
-  };
+  const [activeIndex, setActiveIndex] = useState(null);
 
   return (
     <div className="p-4 bg-white dark:bg-gray-800 rounded-lg md:p-8">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2 mb-8">
-        <ClockIcon className="w-6 h-6 text-pink-400" /> Experience Timeline
+        <ClockIcon className="w-6 h-6 text-green-400" /> Experience Timeline
       </h2>
       
-      {/* Responsive timeline container */}
-      <div className="relative min-h-[400px]">
-        {/* Desktop timeline line */}
-        <div className="hidden sm:block absolute top-12 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent" 
-             aria-hidden="true" />
-        
-        {/* Mobile timeline line */}
-        <div className="sm:hidden absolute left-8 top-0 h-full w-1 bg-gradient-to-b from-transparent via-gray-200 dark:via-gray-700 to-transparent" 
-             aria-hidden="true" />
-        
-        {/* Timeline items container */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-start sm:justify-between gap-8 sm:gap-4">
-          {sortedExperiences.map((exp, index) => (
-            <div 
-              key={index} 
-              className={`relative flex sm:flex-col items-start sm:items-center w-full sm:w-48 group transition-all duration-300 ${
-                isMobile ? 'pl-20' : ''
-              }`}
-            >
-              {/* Timeline node */}
+      {/* Desktop Timeline */}
+      <div className="hidden lg:block relative mb-8">
+        <div className="absolute top-12 left-0 w-full h-0.5 bg-gray-200 dark:bg-gray-700" />
+        <div className="flex justify-between">
+          {experience.map((exp, index) => (
+            <div key={index} className="relative flex flex-col items-center">
               <button
-                className="relative z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 dark:focus:ring-offset-gray-800 rounded-full"
-                onClick={() => handleClick(index)}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onFocus={() => setHoveredIndex(index)}
-                onBlur={() => setHoveredIndex(null)}
-                aria-expanded={selectedIndex === index}
-                aria-controls={`exp-details-${index}`}
+                className="w-12 h-12 rounded-full bg-green-500 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700 flex items-center justify-center text-white transition-all duration-200 hover:scale-110 z-10"
+                onClick={() => setActiveIndex(activeIndex === index ? null : index)}
               >
-                <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 ${
-                  hoveredIndex === index || selectedIndex === index
-                    ? 'bg-pink-500 dark:bg-pink-600 scale-110'
-                    : 'bg-green-500 dark:bg-green-600 hover:scale-105'
-                }`}>
-                  <exp.icon className="h-7 w-7 sm:h-8 sm:w-8 transition-transform duration-300 group-hover:scale-110" />
-                </div>
-                <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-pink-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <exp.icon className="w-6 h-6" />
               </button>
-
-              {/* Year label */}
-              <p className={`text-sm font-medium mt-2 transition-colors duration-300 ${
-                hoveredIndex === index || selectedIndex === index
-                  ? 'text-pink-600 dark:text-pink-400'
-                  : 'text-gray-700 dark:text-gray-300'
-              }`}>
+              <span className="text-sm font-medium mt-2 text-gray-700 dark:text-gray-300">
                 {exp.year}
-              </p>
-
-              {/* Experience details card */}
-              <div
-                id={`exp-details-${index}`}
-                className={`${isMobile ? 'relative mt-4' : 'absolute top-24 left-1/2 transform -translate-x-1/2'} 
-                  w-full sm:w-80 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 
-                  transition-all duration-300 overflow-hidden ${
-                    (hoveredIndex === index || selectedIndex === index)
-                      ? 'opacity-100 visible max-h-[400px] scale-100 z-20'
-                      : 'opacity-0 invisible max-h-0 scale-95'
-                  }`}
-              >
-                <div className="p-4 space-y-3">
-                  {/* Company & role */}
-                  <div className="border-l-4 border-pink-500 pl-3">
-                    <h3 className="font-bold text-lg text-gray-900 dark:text-white">{exp.company}</h3>
-                    <p className="text-pink-600 dark:text-pink-400 text-sm font-medium">{exp.position}</p>
-                  </div>
-                  
-                  {/* Period & location */}
-                  <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
-                    <ClockIcon className="w-4 h-4" />
-                    <span>{exp.period}</span>
-                    <span>•</span>
-                    <span>{exp.location}</span>
-                  </div>
-                  
-                  {/* Description */}
-                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                    {exp.description}
-                  </p>
-                  
-                  {/* Skills */}
-                  <div className="flex flex-wrap gap-2">
+              </span>
+              {activeIndex === index && (
+                <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-72 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 z-20">
+                  <h3 className="font-bold text-gray-900 dark:text-white">{exp.company}</h3>
+                  <p className="text-green-600 dark:text-green-400 text-sm">{exp.position}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">{exp.period}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{exp.description}</p>
+                  <div className="flex flex-wrap gap-1">
                     {exp.skills.map((skill, i) => (
-                      <span 
-                        key={i} 
-                        className="text-xs px-2 py-1 rounded-full bg-pink-100 dark:bg-pink-900/30 
-                                 text-pink-800 dark:text-pink-300 hover:bg-pink-200 dark:hover:bg-pink-900/50 
-                                 transition-colors duration-200 cursor-default"
-                      >
+                      <span key={i} className="text-xs bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-2 py-1 rounded">
                         {skill}
                       </span>
                     ))}
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
         </div>
       </div>
 
-      <p className="mt-8 text-center text-gray-500 dark:text-gray-400 text-sm">
-        {isMobile ? 'Tap' : 'Click or hover over'} the icons to explore my journey
-      </p>
+      {/* Mobile Timeline */}
+      <div className="lg:hidden space-y-6">
+        {experience.map((exp, index) => (
+          <div key={index} className="flex items-start space-x-4">
+            <div className="flex flex-col items-center">
+              <div className="w-10 h-10 rounded-full bg-green-500 dark:bg-green-600 flex items-center justify-center text-white">
+                <exp.icon className="w-5 h-5" />
+              </div>
+              {index < experience.length - 1 && (
+                <div className="w-0.5 h-16 bg-gray-200 dark:bg-gray-700 mt-2" />
+              )}
+            </div>
+            <div className="flex-1 pb-8">
+              <div className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="font-bold text-gray-900 dark:text-white">{exp.company}</h3>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">{exp.year}</span>
+                </div>
+                <p className="text-green-600 dark:text-green-400 text-sm font-medium">{exp.position}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">{exp.period}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{exp.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {exp.skills.map((skill, i) => (
+                    <span key={i} className="text-xs bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-2 py-1 rounded">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -289,14 +221,14 @@ function InterestsTab() {
   const categoryColors = {
     'Technology': 'text-blue-400',
     'Learning': 'text-green-400',
-    'Creative': 'text-purple-400',
-    'Lifestyle': 'text-pink-400'
+    'Creative': 'text-blue-500',
+    'Lifestyle': 'text-green-500'
   };
 
   return (
     <div className="p-4 bg-white dark:bg-gray-800 rounded-lg md:p-8">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2 mb-8">
-        <HeartIcon className="w-6 h-6 text-red-400" /> Interests & Hobbies
+        <HeartIcon className="w-6 h-6 text-blue-400" /> Interests & Hobbies
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {interests.map((category, idx) => {
@@ -424,7 +356,7 @@ export default function About() {
           <div className="sm:hidden">
             <select
               id="tabs"
-              className="bg-gray-50 dark:bg-gray-700 border-0 border-b border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-t-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400"
+              className="bg-gray-50 dark:bg-gray-700 border-0 border-b border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-t-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:placeholder-gray-400"
               onChange={e => setActiveTab(e.target.value)}
               value={activeTab}
               aria-label="Select tab"
@@ -443,7 +375,7 @@ export default function About() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`inline-flex items-center justify-center gap-2 w-full p-4 transition-colors duration-200 ${
                     activeTab === tab.id
-                      ? "bg-blue-500 text-white"
+                      ? "bg-green-500 text-white"
                       : "bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white"
                   }`}
                   role="tab"

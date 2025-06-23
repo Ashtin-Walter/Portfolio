@@ -1,33 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ArrowUpIcon } from '@heroicons/react/24/solid';
 
-// Removed isDarkMode prop
 export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Show button when page is scrolled down
-  const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
+  // Throttle scroll events for better performance
+  const toggleVisibility = useCallback(() => {
+    const scrolled = window.pageYOffset > 300;
+    if (scrolled !== isVisible) {
+      setIsVisible(scrolled);
     }
-  };
+  }, [isVisible]);
 
   // Scroll smoothly to top
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
-  };
+  }, []);
 
   useEffect(() => {
-    window.addEventListener('scroll', toggleVisibility);
-    return () => {
-      window.removeEventListener('scroll', toggleVisibility);
+    let timeoutId = null;
+    const handleScroll = () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(toggleVisibility, 10);
     };
-  }, []);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [toggleVisibility]);
 
   // Use dark: variants for styling
   return (

@@ -7,6 +7,18 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 import ErrorBoundary from "./ErrorBoundary";
 import LoadingSpinner from "./components/LoadingSpinner";
 import NotFound from "./components/NotFound";
+import { measurePerformance } from "./utils/performance";
+
+// Scroll to top component for route changes
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+}
 
 // Lazy load sections
 const LazyLanding = lazy(() => import("./sections/Landing"));
@@ -20,6 +32,8 @@ const LazyTestimonials = lazy(() => import("./sections/Testimonials"));
 const LazyContact = lazy(() => import("./sections/Contact"));
 const LazyToolshed = lazy(() => import("./sections/Toolshed"));
 const Blog = lazy(() => import("./sections/Blog"));
+const PrivacyPolicy = lazy(() => import("./sections/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./sections/TermsOfService"));
 
 
 function AppContent() {
@@ -30,6 +44,14 @@ function AppContent() {
   
   const location = useLocation();
 
+  // Performance monitoring in development
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      measurePerformance.logWebVitals();
+      measurePerformance.measurePageLoad();
+    }
+  }, []);
+
   // Effect to update localStorage and HTML class when isDarkMode changes
   useEffect(() => {
     const root = window.document.documentElement;
@@ -39,12 +61,15 @@ function AppContent() {
     localStorage.setItem('theme', currentTheme);
   }, [isDarkMode]);
 
-  // Handle navigation from arcade page
+  // Handle navigation from other pages and scroll to specific sections
   useEffect(() => {
     if (location.pathname === '/' && location.state?.scrollTo) {
       setTimeout(() => {
         document.getElementById(location.state.scrollTo)?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
+    } else if (location.pathname === '/' && !location.state?.scrollTo) {
+      // Ensure we start at the top for the home page
+      window.scrollTo(0, 0);
     }
   }, [location]);  
 
@@ -83,6 +108,10 @@ function AppContent() {
               </>
             } />
             
+            {/* Privacy Policy and Terms of Service routes */}
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
+            
             {/* 404 NotFound route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -98,6 +127,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <Router>
+        <ScrollToTop />
         <Helmet>
           <title>Ashtin Walter | Portfolio</title>
           <meta name="description" content="Portfolio of Ashtin Walter: Full-Stack Developer specializing in React, Next.js, Node.js, and modern web technologies." />
