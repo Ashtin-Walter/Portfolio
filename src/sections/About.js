@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useInView } from "react-intersection-observer";
 import { personalInfo, interests, certifications, developmentSetup, experience } from "../data";
 import {

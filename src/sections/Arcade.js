@@ -1,5 +1,5 @@
 import { PowerIcon, MagnifyingGlassIcon, XMarkIcon, AdjustmentsHorizontalIcon } from "@heroicons/react/24/solid";
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { games } from "../data";
 import GameCard from "../components/GameCard";
 
